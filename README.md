@@ -31,3 +31,6 @@
 ## 画面遷移図
 [[画面遷移図] short_cut_key_game](https://xd.adobe.com/view/999a73f7-5a2c-4f7f-aae7-7429c94589ca-ccc9/)
 
+## ER図
+[[ER図] short_cut_key_game](https://dbdiagram.io/d/605d1aa8ecb54e10c33d4fa3)
+
