@@ -31,5 +31,8 @@ module ShortcutKeyGame
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # 作成ファイルslimに変更
+    config.generators.template_engine = :slim
   end
 end
