@@ -1,0 +1,94 @@
+h1
+  | タイムアタック
+.center
+  div
+    ul
+      li
+        | 問題文の指示に合ったショートカットキーを入力してください
+      li
+        | ショートカットキーがわからない場合はチェックボックスにチェックを入れてください
+      li
+        | 削除系の問題以外で誤って既存のテキストを消してしまった場合はCommand-Zで戻してください ※1
+      li
+        | ※1 既存のテキストを削除すると正解判定されないので注意して下さい
+  #description
+    h2
+      | スペースボタンでゲームスタート
+  p
+    input#checkbox[type="checkbox" value="#" checked]
+    |  回答を表示する場合はチェック
+  h2#result[style="display: none"]
+  #finish[style="display: none"]
+    = link_to "もう一度遊ぶ", time_attack_path, class: "btn btn-lg btn-primary"
+    = link_to "結果をtwitterに報告できたらいいのになぁ〜", '#', class: "btn btn-lg btn-primary"
+  #question-1[style="display: none"]
+    div
+      h2#question-article
+        | 一行目を削除してください
+    .hint
+      h2
+        | Command-D
+    #editor-1[style="height: 100px; width: 100%;"]
+      pre
+        code
+          | この行を削除してください
+    #answer-1.answer[style="display: none"]
+  #question-2[style="display: none"]
+    div
+      h2#question-article
+        | 一行目を一行コピーしてください<br>
+    .hint
+      h2
+        | Command-Option-Down or Command-Option-Up
+    #editor-2[style="height: 100px; width: 100%;"]
+      pre
+        code
+          |  この行を一行コピーしてください<br>
+    #answer-2.answer[style="display: none"]
+      |
+        この行を一行コピーしてください<br>
+        この行を一行コピーしてください<br>
+  #question-3[style="display: none"]
+    div
+      h2#question-article
+        | 1行目と2行目を入れ替えてください
+    .hint
+      h2
+        | Option-Down or Option-Up
+    #editor-3[style="height: 100px; width: 100%;"]
+      pre
+        code
+          |
+            このテキストを2行目にしてください<br>
+            このテキストを1行目にしてください<br>
+  #answer-3.answer[style="display: none"]
+    |
+      このテキストを1行目にしてください<br>
+      このテキストを2行目にしてください<br>
+  #question-4[style="display: none"]
+    div
+      h2#question-article
+        | 'hoge'のみ削除してください
+    .hint
+      h2
+        | Option-Fn-Backspace or Option-Delete
+    #editor-4[style="height: 100px; width: 100%;"]
+      pre
+        code
+          |  hoge
+          li
+    #answer-4.answer[style="display: none"]
+      li
+  #question-5[style="display: none"]
+    div
+      h2#question-article
+        | コメントアウトしてください
+    .hint
+      h2
+        | Command-/
+    #editor-5[style="height: 100px; width: 100%;"]
+      pre
+        code
+          |  この行をコメントアウトしてください
+  #answer-5.answer[style="display: none"]
+    | <!--この行をコメントアウトしてください-->
