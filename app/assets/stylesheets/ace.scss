@@ -1,0 +1,81 @@
+/* ace.css */
+
+.typescript-ref {
+  position: absolute;
+  border: 1px solid white;
+  opacity: 0.7;
+}
+
+.typescript-error {
+  position: absolute;
+  border-bottom: 1px solid red;
+}
+
+#javascript-run {
+  margin: 0px;
+  margin-top: 10px;
+  padding: 5px;
+  background: #999;
+  color: white;
+}
+
+.ace_autocomplete {
+  height: 226px;
+  background: white;
+  overflow: hidden;
+  border: 1px solid #ccc;
+
+  ul {
+    width: 400px;
+    margin: 0px;
+    padding: 2px;
+  }
+
+  li {
+    padding: 1px;
+    line-height: 1.2em;
+    height: 1.2em;
+    overflow: hidden;
+  }
+}
+
+.ace_autocomplete_selected {
+  background: #eee;
+
+  .label-name {
+    font-weight: bold;
+  }
+
+  .label-type {
+    visibility: visible;
+  }
+}
+
+.label-kind {
+  background: #666;
+  color: white;
+  padding: 0px 3px;
+  margin-right: 3px;
+}
+
+.label-kind-property {
+  background: green;
+}
+
+.label-kind-method {
+  background: blue;
+}
+
+.label-kind-interface {
+  background: #666;
+}
+
+.label-kind-variable {
+  background: orangered;
+}
+
+.label-type {
+  padding-left: 10px;
+  color: blue;
+  visibility: hidden;
+}
