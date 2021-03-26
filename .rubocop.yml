@@ -21,6 +21,7 @@ AllCops:
     - 'config/puma.rb'
     - 'config/spring.rb'
     - 'Gemfile'
+    - 'spec/rails_helper.rb'
 
 Rails:
   Enabled: true
