@@ -8,4 +8,7 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
   body
-    = yield
+    = render 'layouts/header'
+    .container
+      = yield
+      = render 'layouts/footer'
