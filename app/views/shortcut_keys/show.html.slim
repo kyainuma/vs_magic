@@ -1,0 +1,18 @@
+.card
+  .card-header.pb-3
+  .card-body
+    table.table.table-bordered
+      tbody
+        tr
+          td = @shortcut_key.id
+          td = @shortcut_key.answer_key
+          td = @shortcut_key.modifier_key
+          td = @shortcut_key.question
+  p#result result
+  input#input
+
+  div#editor style="width: 100%; height: 200px"
+
+input.shortcut_keys_json name="arr_json" type="hidden" value="#{@shortcut_key_json}"
+
+= javascript_pack_tag 'test'
