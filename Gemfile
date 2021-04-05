@@ -26,6 +26,8 @@ group :development, :test do
   gem 'rails_best_practices'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do
