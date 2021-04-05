@@ -236,7 +236,13 @@ GEM
       sprockets-rails
       tilt
 
+    seed-fu (2.3.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+
+
     sexp_processor (4.15.2)
+
 
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
@@ -305,6 +311,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
+  seed-fu
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
