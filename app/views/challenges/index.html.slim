@@ -1,0 +1,28 @@
+.card
+  .card-header.pb-3
+  .card-body
+    / h2#result[style="visibility:hidden;"] クリアタイム
+    div#description
+      ul
+        h2
+          | 問題文の指示に合ったショートカットキーを入力してください
+        h2
+          | 10問の正解数と正解率を競うゲームです
+        h2
+          | ショートカットキーがわからない場合はチェックボックスにチェックを入れてください
+        h2
+          input#checkbox[type="checkbox" value="#" checked]
+          |  回答を表示する場合はチェック
+        h2
+          | スペースボタンでゲームスタート
+    h2#result[style="visibility:hidden;"] クリアタイム
+    div#game
+      h2#status-area 　
+      h2#correctAnswers[style="visibility:hidden;"] 正解数
+      h2#question[style="visibility:hidden;"] 問題
+      h2#answer[style="visibility:hidden;"] 答え
+      h2#command[style="visibility:hidden;"] コマンド
+
+input.shortcut_keys_json name="arr_json" type="hidden" value="#{@shortcut_keys_json}"
+
+= javascript_pack_tag 'challenge'
