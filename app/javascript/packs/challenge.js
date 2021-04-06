@@ -15,8 +15,12 @@ function andMeta(event, answer_key, modifier_key, question) {
     if (event.key === answer_key && event.metaKey) {
         event.preventDefault();
         replacement(answer_key, modifier_key, question);
-    } else if (event.key === answer_key || event.metaKey) {
-        return;
+    } else if (event.key !== answer_key && event.metaKey) {
+        if (event.key === answer_key || event.key === 'Meta') {
+            return;
+        } else {
+            missFlash();
+        }
     } else {
         missFlash();
     }
@@ -145,8 +149,7 @@ function replacement(answer_key, modifier_key, question) {
 }
 
 // スペーススタート処理 ロードして1回目のみ発火
-window.addEventListener('keyup', onKeyPress, {once: true})
-function onKeyPress(event) {
+window.addEventListener('keydown',event => {
     if ( event.key === " ") {
         document.querySelector('#question').style.visibility = "visible";
         document.querySelector('#correctAnswers').style.visibility = "visible";
@@ -160,53 +163,51 @@ function onKeyPress(event) {
         }else{
             document.querySelector("#answer").style.visibility = "hidden";
         }
+        document.body.addEventListener('keydown',event => {
+            let answer_key = arrs[0].answer_key;
+            let modifier_key = arrs[0].modifier_key;
+            let question = arrs[0].question;
+            switch (modifier_key) {
+                case 'cmd':
+                    andMeta(event, answer_key, modifier_key, question);
+                    break;
+                case 'ctrl':
+                    andCtrl(event, answer_key, modifier_key, question);
+                    break
+                case 'alt':
+                    andAlt(event, answer_key, modifier_key, question);
+                    break;
+                case 'shift':
+                    andShift(event, answer_key, modifier_key, question);
+                    break;
+                case 'cmd + alt':
+                    andMetaAlt(event, answer_key, modifier_key, question);
+                    break;
+                case 'cmd + shift':
+                    andMetaShift(event, answer_key, modifier_key, question);
+                    break;
+                case 'ctrl + alt':
+                    andCtrlAlt(event, answer_key, modifier_key, question);
+                    break;
+                case 'ctrl + shift':
+                    andCtrlShift(event, answer_key, modifier_key, question);
+                    break;
+                case 'alt + shift':
+                    andAltShift(event, answer_key, modifier_key, question);
+                    break;
+                case 'cmd + alt + shift':
+                    andMetaAltShift(event, answer_key, modifier_key, question);
+                    break;
+                case 'ctrl + alt + shift':
+                    andCtrlAltShift(event, answer_key, modifier_key, question);
+                    break;
+            }
+            if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
+                event.preventDefault();
+            }
+        });
     }
     return
-}
-
-document.body.addEventListener('keydown',
-    event => {
-        if ( event.key === " ") {
-            return;
-        }
-        let answer_key = arrs[0].answer_key;
-        let modifier_key = arrs[0].modifier_key;
-        let question = arrs[0].question;
-        switch (modifier_key) {
-            case 'cmd':
-                andMeta(event, answer_key, modifier_key, question);
-                break;
-            case 'ctrl':
-                andCtrl(event, answer_key, modifier_key, question);
-                break
-            case 'alt':
-                andAlt(event, answer_key, modifier_key, question);
-                break;
-            case 'shift':
-                andShift(event, answer_key, modifier_key, question);
-                break;
-            case 'cmd + alt':
-                andMetaAlt(event, answer_key, modifier_key, question);
-                break;
-            case 'cmd + shift':
-                andMetaShift(event, answer_key, modifier_key, question);
-                break;
-            case 'ctrl + alt':
-                andCtrlAlt(event, answer_key, modifier_key, question);
-                break;
-            case 'ctrl + shift':
-                andCtrlShift(event, answer_key, modifier_key, question);
-                break;
-            case 'alt + shift':
-                andAltShift(event, answer_key, modifier_key, question);
-                break;
-            case 'cmd + alt + shift':
-                andMetaAltShift(event, answer_key, modifier_key, question);
-                break;
-            case 'ctrl + alt + shift':
-                andCtrlAltShift(event, answer_key, modifier_key, question);
-                break;
-        }
     }
 );
 
@@ -214,7 +215,7 @@ document.body.addEventListener('keydown',
     $.fn.flash_message = function(options) {
         options = $.extend({
             text: 'Done',
-            time: 750,
+            time: 50,
             how: 'before',
             class_name: ''
         }, options);
