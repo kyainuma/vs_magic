@@ -50,6 +50,7 @@ test:
 #
 production:
   <<: *default
+  adapter: mysql
   database: shortcut_key_game_production
   username: shortcut_key_game
   password: <%= ENV['SHORTCUT_KEY_GAME_DATABASE_PASSWORD'] %>
