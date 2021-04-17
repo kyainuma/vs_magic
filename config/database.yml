@@ -50,6 +50,9 @@ test:
 #
 production:
   <<: *default
-  database: shortcut_key_game_production
-  username: shortcut_key_game
-  password: <%= ENV['SHORTCUT_KEY_GAME_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_NAME'] %>
+  url: <%= ENV['DB_URL'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOSTNAME'] %>
+  port: 3306
