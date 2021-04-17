@@ -28,7 +28,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'mysql2', '>= 0.4.4'
+  # gem 'mysql2', '>= 0.4.4'
+  gem 'sqlite3', '1.4.1'
 end
 
 group :development do
