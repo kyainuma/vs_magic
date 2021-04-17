@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_235122) do
     t.string "answer_key", null: false
     t.string "modifier_key"
     t.string "question", null: false
+    t.string "display_key", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

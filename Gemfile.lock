@@ -68,6 +68,10 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.7.3)
       msgpack (~> 1.0)
+    bootstrap (4.6.0)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -124,6 +128,7 @@ GEM
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
+    popper_js (1.16.0)
     puma (4.3.7)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -273,7 +278,8 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.2)
-  bootstrap-sass (= 3.4.1)
+  bootstrap
+  bootstrap-sass
   byebug
   factory_bot_rails
   html2slim

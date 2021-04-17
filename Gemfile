@@ -57,4 +57,5 @@ gem 'sass-rails', '>= 6'
 # UI/UX
 gem 'slim-rails'
 gem 'html2slim'
-gem 'bootstrap-sass', '3.4.1'
+gem 'bootstrap-sass'
+gem 'bootstrap'

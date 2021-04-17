@@ -4,6 +4,7 @@ class CreateShortcutKeys < ActiveRecord::Migration[6.0]
       t.string :answer_key, null: false
       t.string :modifier_key
       t.string :question, null: false
+      t.string :display_key, null: false
 
       t.timestamps
     end

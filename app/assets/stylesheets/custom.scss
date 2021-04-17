@@ -1,4 +1,4 @@
-@import "bootstrap-sprockets";
+//@import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* mixins, variables, etc. */
@@ -8,7 +8,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  //padding-top: 60px;
 }
 
 section {
@@ -24,6 +24,10 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.navbar {
+  border-radius: 0;
 }
 
 /* typography */
@@ -66,7 +70,7 @@ li {
   color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  //padding-top: 9px;
   font-weight: bold;
   &:hover {
     color: white;

@@ -1,0 +1,44 @@
+.text-center#window
+  div#description
+    h1.my-3
+      | スペースボタンでゲームスタート！
+    ul.text-center.list-group
+      h3.my-3
+        | 指定されたショートカットキーを入力してください
+      h3.my-3
+        | 10問の正解数と正解率を競うゲームです
+      h3.my-3
+        input#checkbox[type="checkbox" value="#" checked]
+        |  回答を表示する場合はチェックを入れてください
+
+  .d-flex.justify-content-center
+    h3.alert.alert-warning#hint
+      | コマンド記号説明
+      br
+      span ⌘Command / ⌥Option / ⇧Shift / ⌃Control / Delete Fn + ⌫
+  .hoge#timer
+  .card#finish[style="display:none;"]
+    .card-header
+      h3 結果
+    .card-body
+      h3#correctAnswers.card-text.my-5
+      h3#result.card-text.my-5
+      h3#errorCount.card-text.my-5
+      = link_to "最初から遊ぶ", challenges_path, class: "btn btn-lg btn-primary my-3"
+  div#game[style="display:none;"]
+    h3#status-area　
+    h3#remainingProblems.mt-3 残り問題数:10
+    h3#answer[style="display:none;"] 答え
+    .d-flex.justify-content-center
+      h3.alert.alert-dark.col-4
+        | 入力中コマンド :
+        span#command
+    h3#question 問題
+    .row
+      img#img.mb-3.col-8
+      = image_tag "/vimsho_pc.gif", class: "col-4"
+
+
+input.shortcut_keys_json name="arr_json" type="hidden" value="#{@shortcut_keys_json}"
+
+= javascript_pack_tag 'challenge'

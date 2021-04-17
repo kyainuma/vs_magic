@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.image-trim img {
+    width: 850px;
+    height: 400px;
+}
