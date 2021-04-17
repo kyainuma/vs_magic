@@ -29,7 +29,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   # gem 'mysql2', '>= 0.4.4'
-  gem 'sqlite3', '~> 1.3.6'
+  gem 'sqlite3', '1.4.1'
 end
 
 group :development do
