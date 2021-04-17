@@ -1,3 +1,15 @@
 // Place all the styles related to the challenges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.keybtn {
+  border: solid 1px #ccbf4c;
+  padding: 12px;
+  border-radius: 5px;
+  margin: 3px 16px 3px 4px;
+  font-size: 70%;
+  display: inline-block;
+  background-color: #f3f3e5;
+  position: relative;
+}
+

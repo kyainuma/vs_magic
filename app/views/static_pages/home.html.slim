@@ -1,12 +1,42 @@
 .center.jumbotron
   h1
-    | Welcome to the
-    br
-    | Short Cut Keys Game
+    | Shortcut Key Games
   h2
-    |  ショートカットキーのタイピング練習ゲームです。
-  = link_to "edittor", time_attack_path, class: "btn btn-lg btn-primary"
-  = link_to "challenges", challenges_path, class: "btn btn-lg btn-primary"
-  = link_to "レッスン", shortcut_keys_path, class: "btn btn-lg btn-primary"
-  = link_to "ヘルプ", '#', class: "btn btn-lg btn-primary"
-  = link_to "お問い合わせ", '#', class: "btn btn-lg btn-primary"
+    |  IDEのショートカットキーのタイピング練習ゲームです。
+
+.container
+  .row
+    .col-md-3
+      h2.text-left
+        | Time Attack
+      p
+        | ショートカットキーを入力するタイムを競うゲームです
+      p
+        = link_to "Time Attack", challenges_path, class: "btn btn-lg btn-primary"
+    .col-md-3
+      h2.text-left
+        | Lesson
+      p
+        | 全てのショートカットキーの一覧
+        br 練習ができます
+      p
+        = link_to "Lesson", shortcut_keys_path, class: "btn btn-lg btn-primary"
+    .col-md-3
+      h2.text-left
+        | Test
+      p
+        | ショートカットキーを覚えたかテストができます
+        br 近日リリース予定
+      p
+        = link_to "近日リリース予定", '#', class: "btn btn-lg btn-secondary"
+    .col-md-3
+      h2.text-left
+        | Emmet
+      p
+        | Emmetを入力するゲームです
+        br 近日リリース予定
+      p
+        = link_to "近日リリース予定", '#', class: "btn btn-lg btn-secondary"
+  .row.d-flex.justify-content-around.mt-5
+    = image_tag "/vimsho.png", class: "col-4"
+    = image_tag "/vimju.png", class: "col-4"

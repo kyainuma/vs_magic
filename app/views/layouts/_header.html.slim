@@ -1,15 +1,13 @@
-header.navbar.navbar-fixed-top.navbar-inverse
-  .container
-    = link_to "Shortcut Keys Game", root_path, id: "logo"
-    nav
-      ul.nav.navbar-nav.navbar-right
-        li
-          = link_to "ホーム", root_path
-        li
-          = link_to "ゲーム",   '#'
-        li
-          = link_to "レッスン", '#'
-        li
-          = link_to "ヘルプ", '#'
-        li
-          = link_to "お問い合わせ", '#'
+header
+  nav.navbar.navbar-expand.navbar-dark.bg-dark
+    = link_to "Shortcut Key Games", root_path, id: "logo", class: ""
+    button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"]
+      span.navbar-toggler-icon
+    #navbarsExample02.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          = link_to "ホーム", root_path, class: "nav-link"
+        li.nav-item
+          = link_to "ゲーム", challenges_path, class: "nav-link"
+        li.nav-item
+          = link_to "レッスン", shortcut_keys_path, class: "nav-link"

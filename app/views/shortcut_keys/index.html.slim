@@ -1,15 +1,17 @@
-.card
-  .card-header.pb-3
-  .card-body
-    table.table.table-bordered
-      tbody
-        - @shortcut_keys.each do |shortcut_key|
-          tr
-            td = link_to shortcut_key.id, shortcut_key_path(shortcut_key.id)
-            td = shortcut_key.answer_key
-            td = shortcut_key.modifier_key
-            td = shortcut_key.question
-
-/ input.shortcut_keys_json name="arr_json" type="hidden" value="#{@shortcut_keys_json}"
-/
-/ = javascript_pack_tag 'test'
+h1 VScode ショートカットキー 一覧
+table.table
+  thead.thead-dark
+    tr
+      th scope="col"
+        h3 概要
+      th scope="col"
+        h3 ショートカットキー
+  tbody
+    - @shortcut_keys.each do |shortcut_key|
+      tr
+        td
+          h3
+            = link_to shortcut_key.question, shortcut_key_path(shortcut_key.id)
+        td
+          h3
+            = shortcut_key.display_key
