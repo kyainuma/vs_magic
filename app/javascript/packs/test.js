@@ -228,9 +228,6 @@ document.body.addEventListener('keydown',event => {
             noModifier(event, event_key, answer_key);
             break;
     }
-    // if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
-    //     event.preventDefault();
-    // }
 });
 
 (function($) {

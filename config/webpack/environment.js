@@ -5,7 +5,8 @@ const erb = require('./loaders/erb')
 environment.plugins.prepend('Provide',
     new webpack.ProvidePlugin({
         $: 'jquery/src/jquery',
-        jQuery: 'jquery/src/jquery'
+        jQuery: 'jquery/src/jquery',
+        Popper: 'popper.js'
     })
 )
 
