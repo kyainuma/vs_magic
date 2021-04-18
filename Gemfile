@@ -59,3 +59,6 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap-sass'
 gem 'bootstrap'
+
+# Authentication
+gem 'sorcery'
