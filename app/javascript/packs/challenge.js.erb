@@ -12,6 +12,7 @@ let starttime, cleartime;
 let correctAnswers = 0;
 let remainingProblems = 10;
 let errorCount = 0;
+const result_twitter = document.querySelector('#js-result-twitter');
 
 function andMeta(event, event_key, answer_key, modifier_key, question) {
     if (event_key === answer_key && event.metaKey) {
@@ -198,6 +199,7 @@ function replacement(answer_key, modifier_key, question) {
         document.querySelector('#correctAnswers').innerHTML = `正解数は${correctAnswers}問です`;
         document.querySelector('#errorCount').innerHTML = `ミス入力は${errorCount}回です`;
         result.innerHTML = `クリアタイムは${cleartime}秒です`;
+        result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime));
     } else {
         arrs.shift();
         document.querySelector('#img').setAttribute('src', `${arrs[0].question}.gif`);
@@ -212,11 +214,15 @@ function timeUp() {
     remainingProblems--;
     if (remainingProblems == 0) {
         cleartime = Math.round((Date.now() - starttime) / 1000);
+        result.style.display = "block";
         document.querySelector('#game').style.display = "none";
+        document.querySelector('#hint').style.display = "none";
         document.querySelector('#timer').style.display = "none";
+        document.querySelector('#finish').style.display = "block";
         document.querySelector('#correctAnswers').innerHTML = `正解数は${correctAnswers}問です`;
         document.querySelector('#errorCount').innerHTML = `ミス入力は${errorCount}回です`;
         result.innerHTML = `クリアタイムは${cleartime}秒です`;
+        result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime));
     } else {
         document.querySelector('#remainingProblems').innerHTML = `残り問題数:${remainingProblems}`;
         arrs.shift();
@@ -282,7 +288,6 @@ window.addEventListener('keydown',event => {
         $('#timer').timer(10);
         document.querySelector('#img').setAttribute('src', `${arrs[0].question}.gif`);
         document.querySelector('#game').style.display = "block";
-//        document.querySelector('#correctAnswers').style.display = "block";
         document.querySelector('#description').style.display = "none";
         problemStatement.innerHTML = arrs[0].question;
         document.querySelector('#answer').innerHTML = `${arrs[0].display_key}`;
