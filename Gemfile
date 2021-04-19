@@ -62,3 +62,5 @@ gem 'bootstrap'
 
 # Authentication
 gem 'sorcery'
+
+gem 'google-analytics-rails'

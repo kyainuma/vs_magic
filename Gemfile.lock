@@ -102,6 +102,7 @@ GEM
     ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    google-analytics-rails (1.1.1)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -306,6 +307,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   factory_bot_rails
+  google-analytics-rails
   html2slim
   jbuilder (~> 2.7)
   listen (~> 3.2)
