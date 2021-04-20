@@ -1,12 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-// gifサイズ調整
-.image-trim img {
-  width: 850px;
-  height: 400px;
-}
-
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -45,6 +39,10 @@ textarea {
   border-radius: 0;
 }
 
+.card {
+  border-radius: 0;
+}
+
 /* typography */
 body {
   font-family: Meiryo, Osaka, "Segoe UI", Helvetica, Garuda, Arial, sans-serif;
@@ -72,6 +70,7 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+  margin-bottom: 0;
   //color: $vs-gray;
 }
 
@@ -113,17 +112,26 @@ footer {
   }
 }
 
+// home
+.jumbotron {
+  border-radius: 0;
+}
+
 // time attack
 #window {
-  background-image: url('/mac-pc.jpg');
+  //background-image: url('/mac-pc.jpg');
   //background-size: cover;
-  background-size: 100% 115%;
-  background-repeat: no-repeat;
-  height: 90vh;
-  color: $vs-white;
+  //background-size: 100% 115%;
+  //background-repeat: no-repeat;
+  //height: 60vh;
+  //color: $vs-white;
 }
 
 #checkbox {
   color: $vs-white;
+}
+
+#game {
+  //height: 80vh;
 }
 

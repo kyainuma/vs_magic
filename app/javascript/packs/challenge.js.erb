@@ -205,7 +205,7 @@ function replacement(answer_key, modifier_key, question) {
         document.querySelector('#img').setAttribute('src', `${arrs[0].question}.gif`);
         problemStatement.innerHTML = arrs[0].question;
         document.querySelector('#answer').innerHTML = `${arrs[0].display_key}`;
-        document.querySelector('#remainingProblems').innerHTML = `残り問題数:${remainingProblems}`;
+        document.querySelector('#remainingProblems').innerHTML = `${remainingProblems}`;
         $('#timer').timer(10);
     }
 }
@@ -224,7 +224,7 @@ function timeUp() {
         result.innerHTML = `クリアタイムは${cleartime}秒です`;
         result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime));
     } else {
-        document.querySelector('#remainingProblems').innerHTML = `残り問題数:${remainingProblems}`;
+        document.querySelector('#remainingProblems').innerHTML = `${remainingProblems}`;
         arrs.shift();
         document.querySelector('#img').setAttribute('src', `${arrs[0].question}.gif`);
         problemStatement.innerHTML = arrs[0].question;
@@ -289,12 +289,12 @@ window.addEventListener('keydown',event => {
         document.querySelector('#img').setAttribute('src', `${arrs[0].question}.gif`);
         document.querySelector('#game').style.display = "block";
         document.querySelector('#description').style.display = "none";
-        problemStatement.innerHTML = arrs[0].question;
-        document.querySelector('#answer').innerHTML = `${arrs[0].display_key}`;
+        problemStatement.innerHTML = `${arrs[0].question}`;
+        document.querySelector('#answer').innerHTML = `<span>${arrs[0].display_key}</span>`;
         starttime = Date.now();
         let checkbox = document.querySelector("#checkbox");
         if (checkbox.checked) {
-            document.querySelector("#answer").style.display = "block";
+            document.querySelector("#answer").style.display = "inline-block";
         }else{
             document.querySelector("#answer").style.display = "none";
         }
