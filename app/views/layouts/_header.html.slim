@@ -1,20 +1,25 @@
 header
-  nav.navbar.navbar-expand.navbar-dark.bg-dark
-    = link_to "Shortcut Key Games", root_path, id: "logo", class: ""
-    button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"]
+  nav.navbar.navbar-expand-md.navbar-dark.bg-vs-dark
+    = link_to "Vscode Shortcut Game", root_path, id: "logo", class: "navbar-brand"
+    button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"]
       span.navbar-toggler-icon
-    #navbarsExample02.collapse.navbar-collapse
-      ul.navbar-nav.mr-auto.col-8
+    #navbarCollapse.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
         li.nav-item
           = link_to "ホーム", root_path, class: "nav-link"
         li.nav-item
           = link_to "ゲーム", challenges_path, class: "nav-link"
         li.nav-item
           = link_to "レッスン", shortcut_keys_path, class: "nav-link"
-    .navbar-nav.mr-auto
-      - if logged_in?
-        span.nav-link = current_user.name
-        = link_to 'ログアウト', logout_path, class: "btn btn-primary", method: :delete
-      - else
-        = link_to 'ユーザー登録', new_user_path, class: "btn btn-success mx-3"
-        = link_to 'ログイン', login_path, class: "btn btn-primary mx-3"
+      .mt-2.mt-md-0
+        ul.navbar-nav.mr-auto
+          - if logged_in?
+            li.nav-item
+              span.nav-link = current_user.name
+            li.nav-item
+              = link_to 'ログアウト', logout_path, class: "nav-link", method: :delete
+          - else
+            li.nav-item
+              = link_to 'ユーザー登録', new_user_path, class: "nav-link"
+            li.nav-item
+              = link_to 'ログイン', login_path, class: "nav-link"

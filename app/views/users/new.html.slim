@@ -1,11 +1,11 @@
 - content_for(:title, t('.title'))
-.container
+.container.mt-3
   .row
     .col-md-10.offset-md-1.col-lg-8.offset-lg-2
       h1
-        = t 'ユーザー登録'
+        = t '.title'
       = form_with(model: @user, local: true) do |f|
-        / = render 'shared/error_messages', object: f.object
+        = render 'shared/error_messages', object: f.object
         .form-group
           = f.label :name
           = f.text_field :name, class: "form-control"
@@ -14,11 +14,9 @@
           = f.text_field :email, class: "form-control"
         .form-group
           = f.label :password
-          br
           = f.password_field :password, class: "form-control"
         .form-group
           = f.label :password_confirmation
-          br
           = f.password_field :password_confirmation, class: "form-control"
         .actions
           = f.submit ('登録'), class: "btn btn-primary"

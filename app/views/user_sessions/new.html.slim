@@ -1,21 +1,17 @@
-.container
+- content_for(:title, t('.title'))
+.container.mt-3
   .row
     .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-      p#notice
-        = notice
       h1
-        = t 'ログイン'
+        = t '.title'
       = form_with url: login_path, method: :post, local: true do |f|
         .form-group
           = f.label :email, t('activerecord.attributes.user.email')
-          br
           = f.text_field :email, class: "form-control"
         .form-group
           = f.label :password, User.human_attribute_name(:password)
-          br
           = f.password_field :password, class: "form-control"
         .actions
-          = f.submit ('Login'), class: "btn btn-primary"
+          = f.submit (t 'defaults.login'), class: "btn btn-primary"
         .text-center
           = link_to (t '.to_register_page'), new_user_path
-          / = link_to (t '.password_forget'), new_password_reset_path

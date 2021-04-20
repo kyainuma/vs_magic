@@ -1,46 +1,47 @@
-.text-center#window
+.container.text-center.mx-auto.mt-3#window
   div#description
-    h1.my-3
+    h2.my-3
       | スペースボタンでゲームスタート！
     ul.text-center.list-group
-      h3.my-3
-        | 指定されたショートカットキーを入力してください
-      h3.my-3
-        | 10問の正解数と正解率を競うゲームです
-      h3.my-3
+      h4.my-3
         input#checkbox[type="checkbox" value="#" checked]
         |  回答を表示する場合はチェックを入れてください
 
-  .d-flex.justify-content-center
-    h3.alert.alert-warning#hint
-      | コマンド記号説明
-      br
-      span ⌘Command / ⌥Option / ⇧Shift / ⌃Control / Delete Fn + ⌫
-  .hoge#timer
   .card#finish[style="display:none;"]
     .card-header
-      h3 結果
+      h4 結果
     .card-body
-      h3#correctAnswers.card-text.my-5
-      h3#result.card-text.my-5
-      h3#errorCount.card-text.my-5
-      p = link_to "https://twitter.com/intent/tweet?text=タイム%20:%20cleartime秒でした！%0a%0a%23Test%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'button is-info text-decoration-none my-3', id: 'js-result-twitter' do
+      h4#correctAnswers.card-text.my-5
+      h4#result.card-text.my-5
+      h4#errorCount.card-text.my-5
+      p = link_to "https://twitter.com/intent/tweet?text=タイム%20:%20cleartime秒でした！%0a%0a%23VSgame%20%23VScodeのショートカット練習アプリ%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'button is-info text-decoration-none my-3', id: 'js-result-twitter' do
         i.fab.fa-twitter.mr-1
         span 結果をTwitterでシェア
       = link_to "最初から遊ぶ", challenges_path, class: "btn btn-lg btn-primary my-3"
-  div#game[style="display:none;"]
-    h3#status-area　
-    h3#remainingProblems.mt-3 残り問題数:10
-    h3#answer[style="display:none;"] 答え
-    .d-flex.justify-content-center
-      h3.alert.alert-dark.col-4
-        | 入力中コマンド :
-        span#command
-    h3#question 問題
-    .row
-      img#img.mb-3.col-8
-      = image_tag "/vimsho_pc.gif", class: "col-4"
 
+  #game
+    #timer.mb-3
+    #status-area　　
+    .card-header.mt-3.bg-vs-blue
+      | 問題:
+      span#question
+    ul.list-group.list-group-flush
+      li.list-group-item.text-center.bg-vs-dark
+        | 残り問題数:
+        span#remainingProblems 10
+      li.list-group-item.text-center.bg-vs-dark
+        | 答え:
+        span#answer
+      li.list-group-item.text-center.bg-vs-dark
+        | 入力中コマンド:
+        span#command
+    .card.bg-vs-dark
+      img#img.bd-placeholder-img.card-img-top.col-12.mx-auto
+
+  .d-flex.justify-content-center.mt-3
+    p.alert.alert-warning#hint
+      | コマンド記号
+      span ⌘Command / ⌥Option / ⇧Shift / ⌃Control / Delete Fn + ⌫
 
 input.shortcut_keys_json name="arr_json" type="hidden" value="#{@shortcut_keys_json}"
 

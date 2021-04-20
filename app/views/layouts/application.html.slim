@@ -7,9 +7,10 @@ html
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
+    = javascript_include_tag 'manifest'
     = analytics_init if Rails.env.production?
   body
     = render 'layouts/header'
-    .container
-      = yield
-      = render 'layouts/footer'
+    = render 'shared/flash_message'
+    = yield
+    = render 'layouts/footer'
