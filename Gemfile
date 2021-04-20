@@ -65,4 +65,8 @@ gem 'rails-i18n'
 # Authentication
 gem 'sorcery'
 
+# Google Analytics
 gem 'google-analytics-rails'
+
+# OS判定
+gem 'rack-user_agent'
