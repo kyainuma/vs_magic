@@ -60,6 +60,7 @@ gem 'html2slim'
 gem 'bootstrap-sass'
 gem 'bootstrap'
 gem 'font-awesome-sass'
+gem 'rails-i18n'
 
 # Authentication
 gem 'sorcery'
