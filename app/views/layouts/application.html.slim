@@ -11,5 +11,6 @@ html
     = analytics_init if Rails.env.production?
   body
     = render 'layouts/header'
+    = render 'shared/flash_message'
     = yield
     = render 'layouts/footer'
