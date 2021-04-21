@@ -1,4 +1,4 @@
-ShortcutKey.seed(
+MacShortcutKey.seed(
   :id,
   {  answer_key: 'x', modifier_key: 'cmd', question: '行の切り取り (未選択時)',  display_key: '⌘ + X'},
   {  answer_key: 'c', modifier_key: 'cmd', question: '行のコピー (未選択時)',  display_key: '⌘ + C'},
