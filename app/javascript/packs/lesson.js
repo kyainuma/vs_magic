@@ -1,231 +1,233 @@
-// arr_json取得
-let Json = document.querySelector('.shortcut_keys_json').value;
-// arr_jsonをパースし配列にする
-let arrs = JSON.parse(Json);
-const result = document.querySelector('#result');
-let problemStatement = document.querySelector('#question');
-let command = document.querySelector('#command');
-let answer_key = '';
-let modifier_key = '';
-let question = '';
+// json取得
+const Json = document.querySelector('.shortcut_keys_json').value;
+// jsonをパースし配列にする
+const shortcut_key = JSON.parse(Json);
+const answer_key = shortcut_key.answer_key;
+const modifier_key = shortcut_key.modifier_key;
+const command = document.querySelector('#command');
 
-
-function andMeta(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.metaKey) {
-        rightFlash(answer_key, modifier_key);
-    } else if (event.metaKey) {
-        if (event.key === 'Meta') {
+function andMeta(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.metaKey) {
+        rightFlash();
+    } else if (e.metaKey) {
+        if (e.key === 'Meta') {
             command.innerHTML = '<span id="meta">meta</span>';
             return;
         } else {
-            missFlash(event);
+            missFlash(e);
         }
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andCtrl(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.ctrlKey) {
-        rightFlash(answer_key, modifier_key);
-    } else if (event.ctrlKey) {
-        if (event.key === 'Control') {
+function andCtrl(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.ctrlKey) {
+        rightFlash();
+    } else if (e.ctrlKey) {
+        if (e.key === 'Control') {
             command.innerHTML = '<span id="control">control</span>';
             return;
         } else {
-            missFlash(event);
+            missFlash(e);
         }
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andAlt(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.altKey) {
-        rightFlash(answer_key, modifier_key);
-    } else if (event.altKey) {
-        if (event.key === 'Alt') {
+function andAlt(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.altKey) {
+        rightFlash();
+    } else if (e.altKey) {
+        if (e.key === 'Alt') {
             command.innerHTML = '<span id="alt">alt</span>';
             return;
         } else {
-            missFlash(event);
+            missFlash(e);
         }
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.shiftKey) {
-        rightFlash(answer_key, modifier_key);
-    } else if (event.shiftKey) {
-        if (event.key === 'Shift') {
+function andShift(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.shiftKey) {
+        rightFlash();
+    } else if (e.shiftKey) {
+        if (e.key === 'Shift') {
             command.innerHTML = '<span id="shift">shift</span>';
             return;
         } else {
-            missFlash(event);
+            missFlash(e);
         }
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andMetaCtrl(event, event_key, answer_key, modifier_key, question) {
-    // 正解
-    if (event_key === answer_key && event.metaKey && event.ctrlKey) {
-        rightFlash(answer_key, modifier_key);
-    } else if (event.metaKey || event.ctrlKey) {
-        if (event.key === 'Meta' || event.key === 'Control') {
+function andMetaCtrl(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.metaKey && e.ctrlKey) {
+        rightFlash();
+    } else if (e.metaKey || e.ctrlKey) {
+        if (e.key === 'Meta' || e.key === 'Control') {
             return;
         } else {
-            missFlash(event);
+            missFlash(e);
         }
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andMetaAlt(event, event_key, answer_key, modifier_key, question) {
-    // 正解
-    if (event_key === answer_key && event.metaKey && event.altKey) {
-        rightFlash(answer_key, modifier_key);
-    } else if (event.metaKey || event.altKey) {
-        if (event.key === 'Meta' || event.key === 'Alt') {
+function andMetaAlt(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.metaKey && e.altKey) {
+        rightFlash();
+    } else if (e.metaKey || e.altKey) {
+        if (e.key === 'Meta' || e.key === 'Alt') {
             return;
         } else {
-            missFlash(event);
+            missFlash(e);
         }
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andMetaShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.metaKey && event.shiftKey) {
-        rightFlash(answer_key, modifier_key);
-    } else if (event.metaKey || event.shiftKey) {
-        if (event.key === 'Meta' || event.key === 'Shift') {
+function andMetaShift(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.metaKey && e.shiftKey) {
+        rightFlash();
+    } else if (e.metaKey || e.shiftKey) {
+        if (e.key === 'Meta' || e.key === 'Shift') {
             return;
         } else {
-            missFlash(event);
+            missFlash(e);
         }
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andCtrlAlt(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.ctrlKey && event.altKey) {
-        rightFlash(answer_key, modifier_key);
-    } else if (event.ctrlKey || event.altKey) {
-        if (event.key === 'Control' || event.key === 'Alt') {
+function andCtrlAlt(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.ctrlKey && e.altKey) {
+        rightFlash();
+    } else if (e.ctrlKey || e.altKey) {
+        if (e.key === 'Control' || e.key === 'Alt') {
             return;
         } else {
-            missFlash(event);
+            missFlash(e);
         }
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andCtrlShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.ctrlKey && event.shiftKey) {
-        rightFlash(answer_key, modifier_key);
-    } else if (event.ctrlKey || event.shiftKey) {
-        if (event.key === 'Control' || event.key === 'Shift') {
+function andCtrlShift(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.ctrlKey && e.shiftKey) {
+        rightFlash();
+    } else if (e.ctrlKey || e.shiftKey) {
+        if (e.key === 'Control' || e.key === 'Shift') {
             return;
         } else {
-            missFlash(event);
+            missFlash(e);
         }
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andAltShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.altKey && event.shiftKey) {
-        rightFlash(answer_key, modifier_key);
-    } else if (event.altKey || event.shiftKey) {
-        if (event.key === 'Alt' || event.key === 'Shift') {
+function andAltShift(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.altKey && e.shiftKey) {
+        rightFlash();
+    } else if (e.altKey || e.shiftKey) {
+        if (e.key === 'Alt' || e.key === 'Shift') {
             return;
         } else {
-            missFlash(event);
+            missFlash(e);
         }
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andMetaAltShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.metaKey && event.altKey && event.shiftKey) {
-        rightFlash(answer_key, modifier_key);
+function andMetaAltShift(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.metaKey && e.altKey && e.shiftKey) {
+        rightFlash();
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andCtrlAltShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.ctrlKey && event.altKey && event.shiftKey) {
-        event.preventDefault();
-        rightFlash(answer_key, modifier_key);
+function andCtrlAltShift(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.ctrlKey && e.altKey && e.shiftKey) {
+        rightFlash();
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function noModifier(event, event_key, answer_key) {
+function noModifier(e) {
+    let event_key = e.key.toLowerCase();
     if (event_key === answer_key) {
-        replacement(answer_key);
+        rightFlash();
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
 document.body.addEventListener('keydown',event => {
     event.preventDefault();
-    let answer_key = arrs.answer_key;
-    let modifier_key = arrs.modifier_key;
-    let question = arrs.question;
-    let event_key = event.key.toLowerCase();
     switch (modifier_key) {
         case 'cmd':
-            andMeta(event, event_key, answer_key, modifier_key, question);
+            andMeta(event);
             break;
         case 'ctrl':
-            andCtrl(event, event_key, answer_key, modifier_key, question);
+            andCtrl(event);
             break
         case 'alt':
-            andAlt(event, event_key, answer_key, modifier_key, question);
+            andAlt(event);
             break;
         case 'shift':
-            andShift(event, event_key, answer_key, modifier_key, question);
+            andShift(event);
             break;
         case 'cmd + ctrl':
-            andMetaCtrl(event, event_key, answer_key, modifier_key, question);
+            andMetaCtrl(event);
             break;
         case 'cmd + alt':
-            andMetaAlt(event, event_key, answer_key, modifier_key, question);
+            andMetaAlt(event);
             break;
         case 'cmd + shift':
-            andMetaShift(event, event_key, answer_key, modifier_key, question);
+            andMetaShift(event);
             break;
         case 'ctrl + alt':
-            andCtrlAlt(event, event_key, answer_key, modifier_key, question);
+            andCtrlAlt(event);
             break;
         case 'ctrl + shift':
-            andCtrlShift(event, event_key, answer_key, modifier_key, question);
+            andCtrlShift(event);
             break;
         case 'alt + shift':
-            andAltShift(event, event_key, answer_key, modifier_key, question);
+            andAltShift(event);
             break;
         case 'cmd + alt + shift':
-            andMetaAltShift(event, event_key, answer_key, modifier_key, question);
+            andMetaAltShift(event);
             break;
         case 'ctrl + alt + shift':
-            andCtrlAltShift(event, event_key, answer_key, modifier_key, question);
+            andCtrlAltShift(event);
             break;
         default :
-            noModifier(event, event_key, answer_key);
+            noModifier(event);
             break;
     }
 });
@@ -243,7 +245,7 @@ document.body.addEventListener('keydown',event => {
             if( $(this).parent().find('.flash_message').get(0) )
                 return;
 
-            let message = $('<strong />', {
+            const message = $('<strong />', {
                 'class': 'flash_message ' + options.class_name,
                 text: options.text
             }).hide().fadeIn('fast');
@@ -258,19 +260,19 @@ document.body.addEventListener('keydown',event => {
     };
 })(jQuery);
 
-function rightFlash(answer_key, modifier_key) {
+function rightFlash() {
     $('#status-area').flash_message({
-        text: `" ${arrs.display_key} " 正解！`,
-        time: 500,
+        text: `" ${shortcut_key.display_key} " 正解！`,
+        time: 100,
         how: 'append',
         class_name: 'alert alert-success'
     });
 }
 
-function missFlash(event) {
+function missFlash(e) {
     $('#status-area').flash_message({
-        text: `" ${event.key} " is miss command！`,
-        time: 500,
+        text: `" ${e.key} " is miss command！`,
+        time: 100,
         how: 'append',
         class_name: 'alert alert-danger'
     });
@@ -291,25 +293,39 @@ function downKey(e) {
         command.innerHTML = '<span id="shift"> ⇧ </span><span id="alt"> ⌥ </span>';
     } else if (e.altKey && e.ctrlKey) {
         command.innerHTML = '<span id="alt"> ⌥ </span><span id="control"> ⌃ </span>';
+    } else if (!(e.shiftKey || e.metaKey || e.ctrlKey || e.altKey)) {
+        $('#command').prepend(`<span id="key"> ${e.key} </span>`);
     } else if (e.shiftKey) {
-        command.innerHTML = '<span id="shift"> ⇧ </span>';
+        $('#command').prepend(`<span id="shift"> ${e.key} </span>`);
     } else if (e.metaKey) {
-        command.innerHTML = '<span id="meta"> ⌘ </span>';
+        $('#command').prepend('<span id="meta"> ⌘ </span>');
     } else if (e.ctrlKey) {
-        command.innerHTML = '<span id="control"> ⌃ </span>';
+        $('#command').prepend('<span id="control"> ⌃ </span>');
     } else if (e.altKey) {
-        command.innerHTML = '<span id="alt"> ⌥ </span>';
+        $('#command').prepend('<span id="alt"> ⌥ </span>');
     }
 }
 
 function upKey(e) {
     if (e.key === 'Meta') {
-        document.querySelector('#meta').remove();
+        document.querySelectorAll('#meta').forEach(elm => {
+            elm.remove();
+        })
     } else if (e.key === 'Shift') {
-        document.querySelector('#shift').remove();
+        document.querySelectorAll('#shift').forEach(elm => {
+            elm.remove();
+        })
     } else if (e.key === 'Control') {
-        document.querySelector('#control').remove();
+        document.querySelectorAll('#ctrl').forEach(elm => {
+            elm.remove();
+        })
     } else if (e.key === 'Alt') {
-        document.querySelector('#alt').remove();
+        document.querySelectorAll('#alt').forEach(elm => {
+            elm.remove();
+        })
+    } else {
+        document.querySelectorAll('#key').forEach(elm => {
+            elm.remove();
+        })
     }
 }
