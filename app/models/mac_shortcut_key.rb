@@ -1,0 +1,2 @@
+class MacShortcutKey < ApplicationRecord
+end

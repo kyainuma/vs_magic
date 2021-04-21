@@ -1,0 +1,2 @@
+class WinShortcutKey < ApplicationRecord
+end
