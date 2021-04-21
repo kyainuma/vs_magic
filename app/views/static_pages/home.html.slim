@@ -16,7 +16,7 @@ main[role="main"]
             |
         p.mb-5
           | ランダムに10問出題されるショートカットキーを入力するタイムを競うゲームです。
-        = link_to "Time Attack",  challenges_path, class: "btn btn-lg btn-primary bg-vs-blue"
+        = link_to "Time Attack",  time_attacks_path, class: "btn btn-lg btn-primary bg-vs-blue"
       .col-md-5
         = image_tag "/game_image.png", class: "featurette-image img-fluid mx-auto"
     hr.featurette-divider
@@ -30,7 +30,7 @@ main[role="main"]
           | 全てのショートカットキーの一覧　
           br
           | 各ショートカットキーの練習ができます。
-        = link_to "レッスン", shortcut_keys_path, class: "btn btn-lg btn-primary bg-vs-blue"
+        = link_to "レッスン", lessons_path, class: "btn btn-lg btn-primary bg-vs-blue"
       .col-md-5.order-md-1
         = image_tag "/lesson_image.png", class: "featurette-image img-fluid mx-auto"
     hr.featurette-divider

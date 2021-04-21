@@ -8,9 +8,9 @@ header
         li.nav-item
           = link_to "ホーム", root_path, class: "nav-link"
         li.nav-item
-          = link_to "ゲーム", challenges_path, class: "nav-link"
+          = link_to "ゲーム", time_attacks_path, class: "nav-link"
         li.nav-item
-          = link_to "レッスン", shortcut_keys_path, class: "nav-link"
+          = link_to "レッスン", lessons_path, class: "nav-link"
       .mt-2.mt-md-0
         ul.navbar-nav.mr-auto
           - if logged_in?

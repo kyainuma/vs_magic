@@ -11,15 +11,15 @@
           | 入力中コマンド :
           span#command
     .card.bg-vs-dark
-      = image_tag "/#{@shortcut_key.question}.gif", class: "bd-placeholder-img card-img-top col-12 mx-auto"
+      = image_tag "/shortcutkeys/#{@shortcut_key.question}.gif", class: "bd-placeholder-img card-img-top col-12 mx-auto"
 
   .d-flex.justify-content-center.mt-3
     p.alert.alert-warning#hint
       | コマンド記号
       span ⌘Command / ⌥Option / ⇧Shift / ⌃Control / Delete Fn + ⌫
 
-  = link_to "戻る", shortcut_keys_path, class: "btn btn-lg btn-primary my-3 mx-auto"
+  = link_to "戻る", lessons_path, class: "btn btn-lg btn-primary my-3 mx-auto"
 
 input.shortcut_keys_json name="arr_json" type="hidden" value="#{@shortcut_key_json}"
 
-= javascript_pack_tag 'test'
+= javascript_pack_tag 'lesson'
