@@ -22,6 +22,7 @@ AllCops:
     - 'config/spring.rb'
     - 'Gemfile'
     - 'spec/rails_helper.rb'
+    - 'app/helpers/application_helper.rb'
 
 Rails:
   Enabled: true
