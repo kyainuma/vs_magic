@@ -8,21 +8,25 @@
         |  回答を表示する場合はチェックを入れてください
 
   .card#finish[style="display:none;"]
-    .card-header
+    .card-header.bg-vs-blue
       h4 結果
-    .card-body
+    .card-body.bg-vs-dark
       h4#correctAnswers.card-text.my-5
       h4#result.card-text.my-5
       h4#errorCount.card-text.my-5
-      p = link_to "https://twitter.com/intent/tweet?text=タイム%20:%20cleartime秒でした！%0a%0a%23VSgame%20%23VScodeのショートカット練習アプリ%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'button is-info text-decoration-none my-3', id: 'js-result-twitter' do
-        i.fab.fa-twitter.mr-1
+      = link_to "https://twitter.com/intent/tweet?text=タイム%20:%20cleartime秒でした！%0a%0a%23VSgame%20%23VScodeのショートカット練習アプリ%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'btn btn-lg btn-primary mx-3 bg-vs-blue', id: 'result-twitter' do
+        i.fab.fa-twitter
         span 結果をTwitterでシェア
-      = link_to "最初から遊ぶ", time_attacks_path, class: "btn btn-lg btn-primary my-3"
+      = link_to "最初から遊ぶ", time_attacks_path, class: "btn btn-lg btn-primary mx-3 bg-vs-blue"
 
   #game
     #timer.mb-3
-    #status-area　　
-    .card-header.mt-3.bg-vs-blue
+    - if @os == 'Mac'
+      .mx-auto
+        p.alert.alert-warning.bg-vs-blue
+          | コマンド記号 :
+          span ⌘ Command / ⌥ Option / ⇧ Shift / ⌃ Control / Delete Fn + ⌫
+    .card-header.bg-vs-blue
       | 問題:
       span#question
     ul.list-group.list-group-flush
@@ -38,11 +42,7 @@
     .card.bg-vs-dark
       img#img.bd-placeholder-img.card-img-top.col-12.mx-auto
 
-  .d-flex.justify-content-center.mt-3
-    p.alert.alert-warning#hint
-      | コマンド記号
-      span ⌘Command / ⌥Option / ⇧Shift / ⌃Control / Delete Fn + ⌫
-
 input.shortcut_keys_json name="arr_json" type="hidden" value="#{@shortcut_keys_json}"
+input.os name="os" type="hidden" value="#{@os}"
 
 = javascript_pack_tag 'time_attack'

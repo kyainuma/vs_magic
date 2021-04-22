@@ -1,238 +1,362 @@
-// arr_json取得
-let Json = document.querySelector('.shortcut_keys_json').value;
-// arr_jsonをパースし配列にする
-let arrs = JSON.parse(Json);
-const result = document.querySelector('#result');
-let problemStatement = document.querySelector('#question');
-let command = document.querySelector('#command');
-let answer_key = '';
-let modifier_key = '';
-let question = '';
-let starttime, cleartime;
-let correctAnswers = 0;
-let remainingProblems = 10;
-let errorCount = 0;
-const result_twitter = document.querySelector('#js-result-twitter');
+let startTime, clearTime;
+let correctAnswers = 0, errorCount = 0, remainingProblems = 10;
+let answer_key = '', modifier_key = '', question = '', display_key = '';
+let modifier = { meta: '', ctrl: '', alt: '', shift: '' }
+const command = document.querySelector('#command');
+const Json = document.querySelector('.shortcut_keys_json').value;
+const keys = JSON.parse(Json);
+const os = document.querySelector('.os').value;
 
-function andMeta(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.metaKey) {
-        replacement(answer_key, modifier_key, question);
-    } else if (event.metaKey) {
-        if (event.key === 'Meta') {
-            command.innerHTML = '<span id="meta">meta</span>';
-            return;
-        } else {
-            missFlash(event);
-        }
+// 正解判定
+function andMeta(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.metaKey) {
+        rightFlash();
+        correctAnswer();
+    } else if (e.key === 'Meta') {
+        command.innerHTML = `${modifier.meta}`;
+    } else if (event_key !== answer_key && e.metaKey) {
+        missFlash(e);
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andCtrl(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.ctrlKey) {
-        replacement(answer_key, modifier_key, question);
-    } else if (event.ctrlKey) {
-        if (event.key === 'Control') {
-            command.innerHTML = '<span id="control">control</span>';
-            return;
-        } else {
-            missFlash(event);
-        }
+function andCtrl(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.ctrlKey) {
+        rightFlash();
+        correctAnswer();
+    } else if (e.key === 'Control') {
+        command.innerHTML = `${modifier.ctrl}`;
+    } else if (event_key !== answer_key && e.ctrlKey) {
+        missFlash(e);
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andAlt(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.altKey) {
-        replacement(answer_key, modifier_key, question);
-    } else if (event.altKey) {
-        if (event.key === 'Alt') {
-            command.innerHTML = '<span id="alt">alt</span>';
-            return;
-        } else {
-            missFlash(event);
-        }
+function andAlt(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.altKey) {
+        rightFlash();
+        correctAnswer();
+    } else if (e.key === 'Alt') {
+        command.innerHTML = `${modifier.alt}`;
+    } else if (event_key !== answer_key && e.altKey) {
+        missFlash(e);
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.shiftKey) {
-        replacement(answer_key, modifier_key, question);
-    } else if (event.shiftKey) {
-        if (event.key === 'Shift') {
-            command.innerHTML = '<span id="shift">shift</span>';
-            return;
-        } else {
-            missFlash(event);
-        }
+function andShift(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.shiftKey) {
+        rightFlash();
+        correctAnswer();
+    } else if (e.key === 'Shift') {
+        command.innerHTML = `${modifier.shift}`;
+    } else if (event_key !== answer_key && e.shiftKey) {
+        missFlash(e);
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andMetaCtrl(event, event_key, answer_key, modifier_key, question) {
-    // 正解
-    if (event_key === answer_key && event.metaKey && event.ctrlKey) {
-        replacement(answer_key, modifier_key, question);
-    } else if (event.metaKey || event.ctrlKey) {
-        if (event.key === 'Meta' || event.key === 'Control') {
-            return;
-        } else {
-            missFlash(event);
-        }
+function andMetaCtrl(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.metaKey && e.ctrlKey) {
+        rightFlash();
+        correctAnswer();
+    } else if (e.key === 'Meta' && e.ctrlKey || e.key === 'Control' && e.metaKey) {
+        command.innerHTML = `${modifier.meta} ${modifier.alt}`
+    } else if (event_key !== answer_key && e.metaKey && e.altKey ) {
+        missFlash(e);
+    } else if (e.key === 'Meta' && e.metaKey) {
+        command.innerHTML = `${modifier.meta}`;
+    } else if (e.key === 'Control' && e.ctrlKey) {
+        command.innerHTML = `${modifier.ctrl}`;
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andMetaAlt(event, event_key, answer_key, modifier_key, question) {
-    // 正解
-    if (event_key === answer_key && event.metaKey && event.altKey) {
-        replacement(answer_key, modifier_key, question);
-    } else if (event.metaKey || event.altKey) {
-        if (event.key === 'Meta' || event.key === 'Alt') {
-            return;
-        } else {
-            missFlash(event);
-        }
+function andMetaAlt(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.metaKey && e.altKey) {
+        rightFlash();
+        correctAnswer();
+    } else if (e.key === 'Meta' && e.alttKey || e.key === 'Alt' && e.metaKey) {
+        command.innerHTML = `${modifier.meta} ${modifier.alt}`
+    } else if (event_key !== answer_key && e.metaKey && e.altKey ) {
+        missFlash(e);
+    } else if (e.key === 'Meta' && e.metaKey) {
+        command.innerHTML = `${modifier.meta}`;
+    } else if (e.key === 'Alt' && e.altKey) {
+        command.innerHTML = `${modifier.alt}`;
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andMetaShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.metaKey && event.shiftKey) {
-        replacement(answer_key, modifier_key, question);
-    } else if (event.metaKey || event.shiftKey) {
-        if (event.key === 'Meta' || event.key === 'Shift') {
-            return;
-        } else {
-            missFlash(event);
-        }
+function andMetaShift(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.metaKey && e.shiftKey) {
+        rightFlash();
+        correctAnswer();
+    } else if (event_key === 'meta' && e.shiftKey || event_key === 'shift' && e.metaKey) {
+        command.innerHTML = `${modifier.meta} ${modifier.shift}`
+    } else if (event_key !== answer_key && e.metaKey && e.shiftKey) {
+        missFlash(e);
+    } else if (e.key === 'Meta' && e.metaKey) {
+        command.innerHTML = `${modifier.meta}`;
+    } else if (e.key === 'Shift' && e.shiftKey) {
+        command.innerHTML =  `${modifier.shift}`;
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andCtrlAlt(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.ctrlKey && event.altKey) {
-        replacement(answer_key, modifier_key, question);
-    } else if (event.ctrlKey || event.altKey) {
-        if (event.key === 'Control' || event.key === 'Alt') {
-            return;
-        } else {
-            missFlash(event);
-        }
+function andCtrlAlt(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.ctrlKey && e.altKey) {
+        rightFlash();
+        correctAnswer();
+    } else if (e.key === 'Control' && e.alttKey || e.key === 'Alt' && e.ctrlKey) {
+        command.innerHTML = `${modifier.ctrl} ${modifier.alt}`
+    } else if (event_key !== answer_key && e.ctrlKey && e.altKey ) {
+        missFlash(e);
+    } else if (e.key === 'Control' && e.ctrlKey) {
+        command.innerHTML = `${modifier.ctrl}`;
+    } else if (e.key === 'Alt' && e.altKey) {
+        command.innerHTML = `${modifier.alt}`;
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andCtrlShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.ctrlKey && event.shiftKey) {
-        replacement(answer_key, modifier_key, question);
-    } else if (event.ctrlKey || event.shiftKey) {
-        if (event.key === 'Control' || event.key === 'Shift') {
-            return;
-        } else {
-            missFlash(event);
-        }
+function andCtrlShift(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.ctrlKey && e.shiftKey) {
+        rightFlash();
+        correctAnswer();
+    } else if (e.key === 'Control' && e.shiftKey || e.key === 'Shift' && e.ctrlKey) {
+        command.innerHTML = `${modifier.ctrl} ${modifier.shift}`
+    } else if (event_key !== answer_key && e.ctrlKey && e.shiftKey ) {
+        missFlash(e);
+    } else if (e.key === 'Control' && e.ctrlKey) {
+        command.innerHTML = `${modifier.ctrl}`;
+    } else if (e.key === 'Shift' && e.shiftKey) {
+        command.innerHTML = `${modifier.shift}`;
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andAltShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.altKey && event.shiftKey) {
-        replacement(answer_key, modifier_key, question);
-    } else if (event.altKey || event.shiftKey) {
-        if (event.key === 'Alt' || event.key === 'Shift') {
-            return;
-        } else {
-            missFlash(event);
-        }
+function andAltShift(e) {
+    let event_key = e.key.toLowerCase();
+    if (event_key === answer_key && e.shiftKey && e.altKey) {
+        rightFlash();
+        correctAnswer();
+    } else if (e.key === 'Shift' && e.altKey || e.key === 'Alt' && e.shiftKey) {
+        command.innerHTML = `${modifier.alt} ${modifier.shift}`
+    } else if (event_key !== answer_key && e.shiftKey && e.altKey ) {
+        missFlash(e);
+    } else if (e.key === 'Shift' && e.shiftKey) {
+        command.innerHTML = `${modifier.shift}`;
+    } else if (e.key === 'Alt' && e.altKey) {
+        command.innerHTML = `${modifier.alt}`;
     } else {
-        missFlash(event);
+        missFlash(e);
     }
 }
 
-function andMetaAltShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.metaKey && event.altKey && event.shiftKey) {
-        replacement(answer_key, modifier_key, question);
-    } else {
-        missFlash(event);
-    }
-}
-
-function andCtrlAltShift(event, event_key, answer_key, modifier_key, question) {
-    if (event_key === answer_key && event.ctrlKey && event.altKey && event.shiftKey) {
-        event.preventDefault();
-        replacement(answer_key, modifier_key, question);
-    } else {
-        missFlash(event);
-    }
-}
-
-function noModifier(event, event_key, answer_key) {
+function noModifier(e) {
+    let event_key = e.key.toLowerCase();
     if (event_key === answer_key) {
-        replacement(answer_key);
+        rightFlash();
+        correctAnswer();
     } else {
-        missFlash(event);
+        missFlash(e);
+    }
+}
+// ここまで正解判定
+
+// 問題差し替え
+function problemReplacement() {
+    if (!keys?.length) {
+        return false;
+    }
+    $('#timer').timer(10);
+    answer_key = keys[0].answer_key;
+    modifier_key = keys[0].modifier_key;
+    display_key = keys[0].display_key;
+    question = keys[0].question;
+    document.querySelector('#question').innerHTML = `${keys[0].question}`;
+    document.querySelector('#remainingProblems').innerHTML = `${remainingProblems}`;
+    document.querySelector('#answer').innerHTML = `<span>${keys[0].display_key}</span>`;
+    document.querySelector('#img').setAttribute('src', `shortcutkeys/${keys[0].question}.gif`);
+}
+
+// 終了判定
+function correctAnswer() {
+    remainingProblems--;
+    if (remainingProblems == 0) {
+        finishGame();
+    } else {
+        keys.shift();
+        problemReplacement();
     }
 }
 
-function replacement(answer_key, modifier_key, question) {
-    remainingProblems--;
+// ゲーム終了
+function finishGame() {
+    clearTime = Math.round((Date.now() - startTime) / 1000);
+    document.querySelector('#finish').style.display = "block";
+    document.querySelector('#game').style.display = "none";
+    document.querySelector('#result').innerHTML = `<p>クリアタイムは${clearTime}秒です</p>
+                                                   <p>正解数は${correctAnswers}問です</p>
+                                                   <p>ミス入力は${errorCount}回です</p>`;
+    const resultTwitter = document.querySelector('#result-twitter');
+    resultTwitter.href = resultTwitter.href.replace('cleartime', String(clearTime));
+}
+
+// Mac/windowsコマンド切り替え
+window.onload = () => {
+    modifier.meta  = (os === 'Mac')? '<span id="meta"> ⌘ </span>'  : '<span id="meta"> Win </span>';
+    modifier.ctrl  = (os === 'Mac')? '<span id="ctrl"> ⌃ </span>'  : '<span id="ctrl"> Ctrl </span>';
+    modifier.alt   = (os === 'Mac')? '<span id="alt"> ⌥ </span>'   : '<span id="alt"> Alt </span>';
+    modifier.shift = (os === 'Mac')? '<span id="shift"> ⇧ </span>' : '<span id="shift"> Shift </span>';
+};
+
+// ゲームスタート
+document.addEventListener('keydown',e => {
+    if ( e.key === " " && typeof startTime === "undefined" ) {
+        problemReplacement();
+        startTime = Date.now();
+        document.querySelector('#game').style.display = "block";
+        document.querySelector('#description').style.display = "none";
+        let checkbox = document.querySelector("#checkbox");
+        if (checkbox.checked) {
+            document.querySelector("#answer").style.display = "inline-block";
+        }else{
+            document.querySelector("#answer").style.display = "none";
+        }
+        // 解答定義
+        document.addEventListener('keydown',e => {
+            e.preventDefault();
+            switch (modifier_key) {
+                case 'cmd':
+                    andMeta(e);
+                    break;
+                case 'ctrl':
+                    andCtrl(e);
+                    break
+                case 'alt':
+                    andAlt(e);
+                    break;
+                case 'shift':
+                    andShift(e);
+                    break;
+                case 'cmd  ctrl':
+                    andMetaCtrl(e);
+                    break;
+                case 'cmd  alt':
+                    andMetaAlt(e);
+                    break;
+                case 'cmd  shift':
+                    andMetaShift(e);
+                    break;
+                case 'ctrl  alt':
+                    andCtrlAlt(e);
+                    break;
+                case 'ctrl  shift':
+                    andCtrlShift(e);
+                    break;
+                case 'alt  shift':
+                    andAltShift(e);
+                    break;
+                default :
+                    noModifier(e);
+                    break;
+            }
+        });
+    }
+    return false;
+    }
+);
+
+// 入力中キーを離したら非表示
+document.addEventListener('keyup', e => {
+    if (e.key === 'Meta') {
+        document.querySelectorAll('#meta').forEach(elm => {
+            elm.remove();
+        });
+    } else if (e.key === 'Shift') {
+        document.querySelectorAll('#shift').forEach(elm => {
+            elm.remove();
+        });
+    } else if (e.key === 'Control') {
+        document.querySelectorAll('#ctrl').forEach(elm => {
+            elm.remove();
+        });
+    } else if (e.key === 'Alt') {
+        document.querySelectorAll('#alt').forEach(elm => {
+            elm.remove();
+        });
+    }
+});
+
+function rightFlash() {
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": true,
+        "onclick": null,
+        "showDuration": "3000",
+        "hideDuration": "1000",
+        "timeOut": "1000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    Command: toastr["success"](`${display_key}  正解です！`)
     correctAnswers++;
-    rightFlash(answer_key, modifier_key);
-    if (remainingProblems == 0) {
-        cleartime = Math.round((Date.now() - starttime) / 1000);
-        result.style.display = "block";
-        document.querySelector('#game').style.display = "none";
-        document.querySelector('#hint').style.display = "none";
-        document.querySelector('#timer').style.display = "none";
-        document.querySelector('#finish').style.display = "block";
-        document.querySelector('#correctAnswers').innerHTML = `正解数は${correctAnswers}問です`;
-        document.querySelector('#errorCount').innerHTML = `ミス入力は${errorCount}回です`;
-        result.innerHTML = `クリアタイムは${cleartime}秒です`;
-        result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime));
-    } else {
-        arrs.shift();
-        document.querySelector('#img').setAttribute('src', `${arrs[0].question}.gif`);
-        problemStatement.innerHTML = arrs[0].question;
-        document.querySelector('#answer').innerHTML = `${arrs[0].display_key}`;
-        document.querySelector('#remainingProblems').innerHTML = `${remainingProblems}`;
-        $('#timer').timer(10);
-    }
+    command.innerHTML = `<span id="right">${display_key}</span>`;
+    $('#right').delay(500).queue(function(next) {
+        $(this).remove();
+    });
 }
 
-function timeUp() {
-    remainingProblems--;
-    if (remainingProblems == 0) {
-        cleartime = Math.round((Date.now() - starttime) / 1000);
-        result.style.display = "block";
-        document.querySelector('#game').style.display = "none";
-        document.querySelector('#hint').style.display = "none";
-        document.querySelector('#timer').style.display = "none";
-        document.querySelector('#finish').style.display = "block";
-        document.querySelector('#correctAnswers').innerHTML = `正解数は${correctAnswers}問です`;
-        document.querySelector('#errorCount').innerHTML = `ミス入力は${errorCount}回です`;
-        result.innerHTML = `クリアタイムは${cleartime}秒です`;
-        result_twitter.href = result_twitter.href.replace('cleartime', String(cleartime));
-    } else {
-        document.querySelector('#remainingProblems').innerHTML = `${remainingProblems}`;
-        arrs.shift();
-        document.querySelector('#img').setAttribute('src', `${arrs[0].question}.gif`);
-        problemStatement.innerHTML = arrs[0].question;
-        document.querySelector('#answer').innerHTML = `${arrs[0].display_key}`;
-        $('#timer').timer(10);
+function missFlash(e) {
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": true,
+        "onclick": null,
+        "showDuration": "3000",
+        "hideDuration": "1000",
+        "timeOut": "1000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
     }
+    Command: toastr["error"](`${e.key}  不正解です！`)
+    errorCount++;
 }
 
+// タイマー定義
 (function($) {
     $.fn.timer = function(totalTime) {
         // 既に起動済のものがある場合は削除しておく
@@ -240,7 +364,7 @@ function timeUp() {
         this.empty();
 
         // ターゲット内に要素を作成
-        this.append('<h4><span></span> seconds left.</h4>');
+        // this.append('<h4><span></span> seconds left.</h4>');
         this.append('<div class="progress"></div>');
         this.children('.progress').append('<div class="progress-bar progress-bar-info"></div>');
         this.find('.progress-bar').css({
@@ -248,19 +372,19 @@ function timeUp() {
             width: '100%'
         });
 
-        var countdown = (function(timeLeft) {
-            var $progressBar = this.find('div.progress-bar');
-            var $header = this.children('h4');
+        let countdown = (function(timeLeft) {
+            let $progressBar = this.find('div.progress-bar');
+            let $header = this.children('h4');
 
             if (timeLeft <= 0) {
-                timeUp();
+                correctAnswer();
                 $header.empty().text('Time Up!').addClass('text-danger');
                 return;
             }
 
-            $header.children('span').text(timeLeft);
+//            $header.children('span').text(timeLeft);
 
-            var width = (timeLeft - 1) * (100/totalTime); // unit in '%'
+            let width = (timeLeft - 1) * (100/totalTime); // unit in '%'
             if (width < 20) { // less than 20 %
                 $progressBar.removeClass();
                 $progressBar.addClass('progress-bar progress-bar-danger');
@@ -273,7 +397,7 @@ function timeUp() {
                 width:  width + '%'
             }, 1000, 'linear');
 
-            var id = setTimeout((function() {
+            let id = setTimeout((function() {
                 countdown(timeLeft - 1);
             }), 1000);
             this.data("id_of_settimeout", id);
@@ -282,160 +406,3 @@ function timeUp() {
         countdown(totalTime);
     };
 })(jQuery);
-
-window.addEventListener('keydown',event => {
-    if ( event.key === " ") {
-        $('#timer').timer(10);
-        document.querySelector('#img').setAttribute('src', `${arrs[0].question}.gif`);
-        document.querySelector('#game').style.display = "block";
-        document.querySelector('#description').style.display = "none";
-        problemStatement.innerHTML = `${arrs[0].question}`;
-        document.querySelector('#answer').innerHTML = `<span>${arrs[0].display_key}</span>`;
-        starttime = Date.now();
-        let checkbox = document.querySelector("#checkbox");
-        if (checkbox.checked) {
-            document.querySelector("#answer").style.display = "inline-block";
-        }else{
-            document.querySelector("#answer").style.display = "none";
-        }
-        document.body.addEventListener('keydown',event => {
-            event.preventDefault();
-            let answer_key = arrs[0].answer_key;
-            let modifier_key = arrs[0].modifier_key;
-            let question = arrs[0].question;
-            let event_key = event.key.toLowerCase();
-            switch (modifier_key) {
-                case 'cmd':
-                    andMeta(event, event_key, answer_key, modifier_key, question);
-                    break;
-                case 'ctrl':
-                    andCtrl(event, event_key, answer_key, modifier_key, question);
-                    break
-                case 'alt':
-                    andAlt(event, event_key, answer_key, modifier_key, question);
-                    break;
-                case 'shift':
-                    andShift(event, event_key, answer_key, modifier_key, question);
-                    break;
-                case 'cmd + ctlr':
-                    andMetaCtrl(event, event_key, answer_key, modifier_key, question);
-                    break;
-                case 'cmd + alt':
-                    andMetaAlt(event, event_key, answer_key, modifier_key, question);
-                    break;
-                case 'cmd + shift':
-                    andMetaShift(event, event_key, answer_key, modifier_key, question);
-                    break;
-                case 'ctrl + alt':
-                    andCtrlAlt(event, event_key, answer_key, modifier_key, question);
-                    break;
-                case 'ctrl + shift':
-                    andCtrlShift(event, event_key, answer_key, modifier_key, question);
-                    break;
-                case 'alt + shift':
-                    andAltShift(event, event_key, answer_key, modifier_key, question);
-                    break;
-                case 'cmd + alt + shift':
-                    andMetaAltShift(event, event_key, answer_key, modifier_key, question);
-                    break;
-                case 'ctrl + alt + shift':
-                    andCtrlAltShift(event, event_key, answer_key, modifier_key, question);
-                    break;
-                default :
-                    noModifier(event, event_key, answer_key);
-                    break;
-            }
-            // if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
-            //     event.preventDefault();
-            // }
-        });
-    }
-    return
-    }, { once: true}
-);
-
-document.addEventListener('keydown', downKey);
-document.addEventListener('keyup', upKey);
-
-function downKey(e) {
-    if (e.metaKey && e.shiftKey) {
-        command.innerHTML = '<span id="meta"> ⌘ </span><span id="shift"> ⇧ </span>';
-    } else if (e.metaKey && e.ctrlKey) {
-        command.innerHTML = '<span id="meta"> ⌘ </span><span id="control"> ⌃ </span>';
-    } else if (e.metaKey && e.altKey) {
-        command.innerHTML = '<span id="meta"> ⌘ </span><span id="alt"> ⌥ </span>';
-    } else if (e.shiftKey && e.ctrlKey) {
-        command.innerHTML = '<span id="shift"> ⇧ </span><span id="control"> ⌃ </span>';
-    } else if (e.shiftKey && e.altKey) {
-        command.innerHTML = '<span id="shift"> ⇧ </span><span id="alt"> ⌥ </span>';
-    } else if (e.altKey && e.ctrlKey) {
-        command.innerHTML = '<span id="alt"> ⌥ </span><span id="control"> ⌃ </span>';
-    } else if (e.shiftKey) {
-        command.innerHTML = '<span id="shift"> ⇧ </span>';
-    } else if (e.metaKey) {
-        command.innerHTML = '<span id="meta"> ⌘ </span>';
-    } else if (e.ctrlKey) {
-        command.innerHTML = '<span id="control"> ⌃ </span>';
-    } else if (e.altKey) {
-        command.innerHTML = '<span id="alt"> ⌥ </span>';
-    }
-}
-
-function upKey(e) {
-    if (e.key === 'Meta') {
-        document.querySelector('#meta').remove();
-    } else if (e.key === 'Shift') {
-        document.querySelector('#shift').remove();
-    } else if (e.key === 'Control') {
-        document.querySelector('#control').remove();
-    } else if (e.key === 'Alt') {
-        document.querySelector('#alt').remove();
-    }
-}
-
-(function($) {
-    $.fn.flash_message = function(options) {
-        options = $.extend({
-            text: 'Done',
-            time: 500,
-            how: 'before',
-            class_name: ''
-        }, options);
-
-        return $(this).each(function() {
-            if( $(this).parent().find('.flash_message').get(0) )
-                return;
-
-            let message = $('<strong />', {
-                'class': 'flash_message ' + options.class_name,
-                text: options.text
-            }).hide().fadeIn('fast');
-
-            $(this)[options.how](message);
-
-            message.delay(options.time).fadeOut('normal', function() {
-                $(this).remove();
-            });
-
-        });
-    };
-})(jQuery);
-
-function rightFlash(answer_key, modifier_key) {
-    $('#status-area').flash_message({
-        text: `" ${arrs[0].display_key} " 正解！`,
-        time: 500,
-        how: 'append',
-        class_name: 'alert alert-success'
-    });
-}
-
-function missFlash(event) {
-    errorCount++;
-    $('#status-area').flash_message({
-        text: `" ${event.key} " is miss command！`,
-        time: 500,
-        how: 'append',
-        class_name: 'alert alert-danger'
-    });
-}
