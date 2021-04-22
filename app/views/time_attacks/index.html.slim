@@ -1,20 +1,23 @@
-.container.text-center.mx-auto.mt-3#window
-  div#description
-    h2.my-3
-      | スペースボタンでゲームスタート！
-    ul.text-center.list-group
-      h4.my-3
-        input#checkbox[type="checkbox" value="#" checked]
-        |  回答を表示する場合はチェックを入れてください
+main#window.container.mx-auto.mt-3.text-center
+  #description.text-center.col-8.mx-auto
+    ul.text-left.inline-block
+      li スペースボタンでゲームスタート！
+      li 正解コマンドを入力している間のみ、"入力中"に表示されます
+      li 特殊キーを押さずに、正解の文字キーを入力しても、Miss判定とします
+      li 一部ブラウザのショートカットが優先されるものがあります
+      li Macユーザーは"⌘" Windowsユーザーは"Ctrl"と"Q" "T" "W" "N"を同時に押さないように注意してください
+    p.my-3
+      input#checkbox[type="checkbox" value="#" checked]
+      |  回答を表示する場合はチェックを入れてください
 
-  .card#finish[style="display:none;"]
+  #finish.card[style="display:none;"]
     .card-header.bg-vs-blue
       h4 結果
     .card-body.bg-vs-dark
       h4#correctAnswers.card-text.my-5
       h4#result.card-text.my-5
       h4#errorCount.card-text.my-5
-      = link_to "https://twitter.com/intent/tweet?text=タイム%20:%20cleartime秒でした！%0a%0a%23VSgame%20%23VScodeのショートカット練習アプリ%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'btn btn-lg btn-primary mx-3 bg-vs-blue', id: 'result-twitter' do
+      = link_to "https://twitter.com/intent/tweet?text=クリア時間:cleartime秒%0a正解数:answers問%0aミス入力:miss回%0a%0a%23VSMAGIC%20%23VSCode%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'btn btn-lg btn-primary mx-3 bg-vs-blue', id: 'result-twitter' do
         i.fab.fa-twitter
         span 結果をTwitterでシェア
       = link_to "最初から遊ぶ", time_attacks_path, class: "btn btn-lg btn-primary mx-3 bg-vs-blue"
@@ -32,12 +35,12 @@
     ul.list-group.list-group-flush
       li.list-group-item.text-center.bg-vs-dark
         | 残り問題数:
-        span#remainingProblems 10
+        span#remainingProblems
       li.list-group-item.text-center.bg-vs-dark
         | 答え:
         span#answer
       li.list-group-item.text-center.bg-vs-dark
-        | 入力中コマンド:
+        | 入力中:
         span#command
     .card.bg-vs-dark
       img#img.bd-placeholder-img.card-img-top.col-12.mx-auto

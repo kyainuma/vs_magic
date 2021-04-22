@@ -219,7 +219,9 @@ function finishGame() {
                                                    <p>正解数は${correctAnswers}問です</p>
                                                    <p>ミス入力は${errorCount}回です</p>`;
     const resultTwitter = document.querySelector('#result-twitter');
-    resultTwitter.href = resultTwitter.href.replace('cleartime', String(clearTime));
+    resultTwitter.href = resultTwitter.href.replace('cleartime', String(clearTime)).
+                                            replace('answers', String(correctAnswers)).
+                                            replace('miss', String(errorCount));
 }
 
 // Mac/windowsコマンド切り替え
