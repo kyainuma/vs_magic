@@ -44,6 +44,10 @@ textarea {
   border-radius: 0;
 }
 
+.card > .list-group {
+  border-bottom: 0;
+}
+
 /* typography */
 body {
   font-family: Meiryo, Osaka, "Segoe UI", Helvetica, Garuda, Arial, sans-serif;
@@ -119,20 +123,6 @@ footer {
 }
 
 // time attack
-#window {
-  //background-image: url('/mac-pc.jpg');
-  //background-size: cover;
-  //background-size: 100% 115%;
-  //background-repeat: no-repeat;
-  //height: 60vh;
-  //color: $vs-white;
-}
-
 #checkbox {
   color: $vs-white;
 }
-
-#game {
-  //height: 80vh;
-}
-

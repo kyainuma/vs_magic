@@ -15,5 +15,6 @@ class LessonsController < ApplicationController
                       WinShortcutKey.find(params[:id])
                     end
     @shortcut_key_json = @shortcut_key.to_json
+    @os = request.os == 'Mac OSX' ? 'Mac' : ''
   end
 end
