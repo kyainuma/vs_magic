@@ -25,7 +25,6 @@ WinShortcutKey.seed(
   { answer_key: '[', modifier_key: 'ctrl + shift', question: '折りたたみ', display_key: 'Ctrl + Shift + ['},
   { answer_key: ']', modifier_key: 'ctrl + shift', question: '展開', display_key: 'Ctrl + Shift + ]'},
   { answer_key: '/', modifier_key: 'ctrl', question: 'コメントアウト・解除', display_key: 'Ctrl + /'},
-  { answer_key: 'a', modifier_key: 'alt + shift', question: 'ブロックコメントの切り替え', display_key: 'Alt + Shift + A'},
   { answer_key: 'z', modifier_key: 'alt', question: '折り返しの切り替え', display_key: 'Alt + Z'},
   { answer_key: 'home', modifier_key: 'ctrl', question: 'ファイルの先頭に移動', display_key: 'Ctrl + Home'},
   { answer_key: 'end', modifier_key: 'ctrl', question: 'ファイルの末尾に移動', display_key: 'Ctrl + End'},
@@ -39,7 +38,7 @@ WinShortcutKey.seed(
   { answer_key: 'm', modifier_key: 'ctrl + shift', question: '問題を開く', display_key: 'Ctrl + Shift + M'},
   { answer_key: 'f8', modifier_key: '', question: '次のエラーまたは警告へ移動', display_key: 'F8'},
   { answer_key: 'f8', modifier_key: 'shift', question: '前のエラーまたは警告へ移動', display_key: 'Shift + F8'},
-  { answer_key: 'tab', modifier_key: 'ctrl + shift', question: '最近使用したエディターの前のエディターを開く', display_key: 'Ctrl + Shift + Tab'},
+  # { answer_key: 'tab', modifier_key: 'ctrl + shift', question: '最近使用したエディターの前のエディターを開く', display_key: 'Ctrl + Shift + Tab'},
   { answer_key: 'arrowleft', modifier_key: 'alt', question: '前回開いていたエディターに戻る', display_key: 'Alt + ←'},
   { answer_key: 'm', modifier_key: 'ctrl', question: 'タブキーをフォーカス移動に切り替える', display_key: 'Ctrl + M'},
 
@@ -62,8 +61,8 @@ WinShortcutKey.seed(
   { answer_key: 'u', modifier_key: 'ctrl', question: 'カーソル動作を元に戻す', display_key: 'Ctrl + U'},
   { answer_key: 'l', modifier_key: 'ctrl + shift', question: '選択部分とマッチするものを全て選択', display_key: 'Ctrl + Shift + L'},
   { answer_key: 'f2', modifier_key: 'ctrl', question: 'すべての出現箇所を選択', display_key: 'Ctrl + F2'},
-  { answer_key: 'arrowright', modifier_key: 'alt + shift', question: '選択範囲を拡大', display_key: 'Alt + Shift + →'},
-  { answer_key: 'arrowleft', modifier_key: 'alt + shift', question: '選択範囲を縮小', display_key: 'Alt + Shift + ←'},
+  # { answer_key: 'arrowright', modifier_key: 'alt + shift', question: '選択範囲を拡大', display_key: 'Alt + Shift + →'},
+  # { answer_key: 'arrowleft', modifier_key: 'alt + shift', question: '選択範囲を縮小', display_key: 'Alt + Shift + ←'},
 
   # 言語編集
   { answer_key: 'f12', modifier_key: '', question: 'カーソル部分の定義元に移動', display_key: 'F12'},
@@ -76,8 +75,8 @@ WinShortcutKey.seed(
   { answer_key: 'o', modifier_key: 'ctrl', question: 'ファイルを開く', display_key: 'Ctrl + O'},
   { answer_key: 's', modifier_key: 'ctrl', question: '保存', display_key: 'Ctrl + S'},
   { answer_key: 's', modifier_key: 'ctrl + shift', question: '名前を付けて保存', display_key: 'Ctrl + Shift + S'},
-  { answer_key: 'tab', modifier_key: 'ctrl', question: '最近使用した次のエディターを開く', display_key: 'Ctrl + Tab'},
-  { answer_key: 'tab', modifier_key: 'ctrl + shift', question: '最近使用した前のエディターを開く', display_key: 'Ctrl + Shift + Tab'},
+  # { answer_key: 'tab', modifier_key: 'ctrl', question: '最近使用した次のエディターを開く', display_key: 'Ctrl + Tab'},
+  # { answer_key: 'tab', modifier_key: 'ctrl + shift', question: '最近使用した前のエディターを開く', display_key: 'Ctrl + Shift + Tab'},
 
   # 表示
   { answer_key: 'f11', modifier_key: '', question: 'フルスクリーン表示の切り替え', display_key: 'F11'},
@@ -97,7 +96,7 @@ WinShortcutKey.seed(
 
   # デバッグ
   { answer_key: 'f9', modifier_key: '', question: 'ブレークポイントの切り替え', display_key: 'F9'},
-  { answer_key: 'f5', modifier_key: '', question: 'デバッグの開始/続行', display_key: 'F5'},
+  { answer_key: 'f5', modifier_key: '', question: 'デバッグの開始・続行', display_key: 'F5'},
   { answer_key: 'f5', modifier_key: 'shift', question: 'デバッグの停止', display_key: 'Shift + F5'},
   { answer_key: 'f11', modifier_key: '', question: 'ステップイン', display_key: 'F11'},
   { answer_key: 'f11', modifier_key: 'shift', question: 'ステップアウト', display_key: 'Shift + F11'},
