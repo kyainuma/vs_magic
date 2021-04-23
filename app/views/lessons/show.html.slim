@@ -1,0 +1,24 @@
+.container.mt-3.text-center
+  - if @os == 'Mac'
+    .mx-auto
+      p.alert.alert-warning.bg-vs-blue
+        | コマンド記号 :
+        span ⌘ Command / ⌥ Option / ⇧ Shift / ⌃ Control / Delete Fn + ⌫
+  .card.mt-3
+    .card-header.bg-vs-blue
+      p = @shortcut_key.question
+    ul.list-group.list-group-flush
+      li.list-group-item.text-center.bg-vs-dark
+        p = "ショートカットキー : #{@shortcut_key.display_key}"
+      li.list-group-item.text-center.bg-vs-dark
+        p
+          | 入力中コマンド :
+          span#command
+    .card.bg-vs-dark
+      = image_tag "/shortcutkeys/#{@shortcut_key.question}.gif", class: "bd-placeholder-img card-img-top col-12 mx-auto"
+  = link_to "戻る", lessons_path, class: "btn btn-lg btn-primary my-3 mx-auto bg-vs-blue"
+
+input.shortcut_keys_json name="arr_json" type="hidden" value="#{@shortcut_key_json}"
+input.os name="os" type="hidden" value="#{@os}"
+
+= javascript_pack_tag 'lesson'

@@ -1,2 +1,0 @@
-class ShortcutKey < ApplicationRecord
-end

@@ -1,0 +1,18 @@
+.container
+  h2.mt-3 VSCode ショートカットキー 一覧
+  table.table.table-striped
+    thead.bg-vs-dark
+      tr
+        th.text-center scope="col"
+          p ショートカットキー
+        th.text-left scope="col"
+          p 概要
+    tbody
+      - @shortcut_keys.each do |shortcut_key|
+        tr
+          td.text-center
+            p
+              = shortcut_key.display_key
+          td.text-left
+            p
+              = link_to shortcut_key.question, lesson_path(shortcut_key.id)

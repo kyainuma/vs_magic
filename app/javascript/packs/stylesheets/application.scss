@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'toastr/build/toastr.min';
 
 /* mixins, variables, etc. */
 
@@ -7,7 +8,7 @@ $gray-medium-light: #eaeaea;
 $vs-blue: #3D78D4;
 $vs-black: #1B1A1E;
 $vs-white: #F4F5F6;
-$vs-gray: #CCCDCE;
+$vs-gray: #F4F5F6;
 
 /* universal */
 .bg-vs-dark {
@@ -18,6 +19,15 @@ $vs-gray: #CCCDCE;
 .bg-vs-blue {
   background-color: $vs-blue;
   color: $vs-white;
+}
+
+.bg-vs-gray {
+  background-color: $vs-gray;
+  color: $vs-black;
+}
+
+.col-vs-blue {
+  color: $vs-blue;
 }
 
 section {
@@ -43,20 +53,38 @@ textarea {
   border-radius: 0;
 }
 
+.card > .list-group {
+  border-bottom: 0;
+}
+
 /* typography */
 body {
   font-family: Meiryo, Osaka, "Segoe UI", Helvetica, Garuda, Arial, sans-serif;
+  font-weight: 600;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  min-height: 80vh;
+}
+
+img {
+  max-height: 45vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-weight: 600;
 }
 
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
   text-align: center;
+  font-weight: 800;
 }
 
 h2 {
@@ -64,14 +92,12 @@ h2 {
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
-  font-weight: normal;
 }
 
 p {
   font-size: 1.1em;
   line-height: 1.7em;
   margin-bottom: 0;
-  //color: $vs-gray;
 }
 
 li {
@@ -84,7 +110,7 @@ li {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: $vs-blue;
   letter-spacing: -1px;
   font-weight: bold;
   &:hover {
@@ -96,8 +122,7 @@ li {
 /* footer */
 
 footer {
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
+  background-color: $vs-black;
 
   small {
     float: left;
@@ -118,20 +143,6 @@ footer {
 }
 
 // time attack
-#window {
-  //background-image: url('/mac-pc.jpg');
-  //background-size: cover;
-  //background-size: 100% 115%;
-  //background-repeat: no-repeat;
-  //height: 60vh;
-  //color: $vs-white;
-}
-
 #checkbox {
   color: $vs-white;
 }
-
-#game {
-  //height: 80vh;
-}
-

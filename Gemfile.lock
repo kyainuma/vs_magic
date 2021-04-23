@@ -124,6 +124,8 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
+    meta-tags (2.14.0)
+      actionpack (>= 3.2.0, < 6.2)
     method_source (1.0.0)
     mini_mime (1.1.0)
     mini_portile2 (2.5.0)
@@ -159,6 +161,9 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rack-user_agent (0.5.2)
+      rack (>= 1.5)
+      woothee (>= 1.0.0)
     rails (6.0.3.6)
       actioncable (= 6.0.3.6)
       actionmailbox (= 6.0.3.6)
@@ -299,6 +304,7 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    woothee (1.11.1)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -317,9 +323,11 @@ DEPENDENCIES
   html2slim
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  meta-tags
   mysql2 (>= 0.4.4)
   overcommit
   puma (~> 4.1)
+  rack-user_agent
   rails (~> 6.0.3, >= 6.0.3.4)
   rails-i18n
   rails_best_practices

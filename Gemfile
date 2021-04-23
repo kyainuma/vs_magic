@@ -61,8 +61,13 @@ gem 'bootstrap-sass'
 gem 'bootstrap'
 gem 'font-awesome-sass'
 gem 'rails-i18n'
+gem 'meta-tags'
 
 # Authentication
 gem 'sorcery'
 
+# Google Analytics
 gem 'google-analytics-rails'
+
+# OS判定
+gem 'rack-user_agent'
