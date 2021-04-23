@@ -14,7 +14,7 @@ WinShortcutKey.seed(
   { answer_key: 'k', modifier_key: 'ctrl  shift', question: 'カーソル行削除', display_key: 'Ctrl  Shift  K'},
   { answer_key: 'enter', modifier_key: 'ctrl', question: '下に行追加', display_key: 'Ctrl  Enter'},
   { answer_key: 'enter', modifier_key: 'ctrl  shift', question: '上に行追加', display_key: 'Ctrl  Shift  Enter'},
-  { answer_key: '¥', modifier_key: 'ctrl  shift', question: '対応するブラケットへ移動', display_key: 'Ctrl  Shift  |'},
+  { answer_key: '¥', modifier_key: 'ctrl  shift', question: '対応するブラケットへ移動', display_key: 'Ctrl  Shift  ¥'},
   { answer_key: ']', modifier_key: 'ctrl', question: '行のインデントを追加', display_key: 'Ctrl  ]'},
   { answer_key: '[', modifier_key: 'ctrl', question: '行のインデントを削除', display_key: 'Ctrl  ['},
   { answer_key: 'home', modifier_key: '', question: '行の先頭の単語に移動', display_key: 'Home'},
