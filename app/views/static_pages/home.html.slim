@@ -40,7 +40,8 @@ main[role="main"]
           | ランダムに10問出題されるショートカットキーを入力するタイムを競うタイピングゲームです。
           br
           | スマートフォンでは使用できません。
-        = link_to "Time Attack",  time_attacks_path, class: "btn btn-lg btn-primary bg-vs-blue"
+        = link_to "Time Attack",  time_attacks_path, class: "btn btn-lg btn-primary bg-vs-blue mr-3 my-3"
+        = link_to "Ranking",  user_time_attacks_path, class: "btn btn-lg btn-primary bg-vs-blue"
       .col-md-5
         = image_tag "/time_attack_img.png", class: "featurette-image img-fluid mx-auto"
     hr.featurette-divider

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :time_attacks, only: %i[index]
   resources :lessons, only: %i[index show]
+
+  resources :user_time_attacks, only: %i[index create]
 end
