@@ -17,10 +17,11 @@ main#window.container.mx-auto.mt-3.text-center
       h4#correctAnswers.card-text.my-5
       h4#result.card-text.my-5
       h4#errorCount.card-text.my-5
-      = link_to "https://twitter.com/intent/tweet?text=クリア時間:cleartime秒%0a正解数:answers問%0aミス入力:miss回%0a%0a%23VSMAGIC%20%23VSCode%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'btn btn-lg btn-primary mx-3 bg-vs-blue', id: 'result-twitter' do
+      = link_to "https://twitter.com/intent/tweet?text=最終結果はresult秒でした！%0a（クリア時間:cleartime秒, タイムアップ:timeup回, ミス:misskey)%0a%0a%23VSMAGIC%20%23VSCode%0a\&url=#{request.url}", target: :_blank, rel: 'noopener noreferrer', class: 'btn btn-lg btn-primary mx-3 bg-vs-blue', id: 'result-twitter' do
         i.fab.fa-twitter
         span 結果をTwitterでシェア
       = link_to "最初から遊ぶ", time_attacks_path, class: "btn btn-lg btn-primary mx-3 bg-vs-blue"
+      = link_to "Ranking",  user_time_attacks_path, class: "btn btn-lg btn-primary bg-vs-blue"
 
   #game
     #timer.mb-3
@@ -47,5 +48,6 @@ main#window.container.mx-auto.mt-3.text-center
 
 input.shortcut_keys_json name="arr_json" type="hidden" value="#{@shortcut_keys_json}"
 input.os name="os" type="hidden" value="#{@os}"
+input.user_id name="user_id" type="hidden" value="#{@user_id}"
 
 = javascript_pack_tag 'time_attack'

@@ -1,5 +1,5 @@
 let startTime, clearTime;
-let correctAnswers = 0, errorCount = 0, remainingProblems = 10;
+let correctAnswers = 0, missCount = 0, timeUpCount = 0, remainingProblems = 10;
 let answer_key = '', modifier_key = '', question = '', display_key = '';
 let modifier = { meta: '', ctrl: '', alt: '', shift: '' }
 const command = document.querySelector('#command');
@@ -210,18 +210,52 @@ function correctAnswer() {
     }
 }
 
+//ajax用CSRFトークン設定
+function set_csrftoken() {
+    $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+        if (!options.crossDomain) {
+            const token = $('meta[name="csrf-token"]').attr('content');
+            if (token) {
+                return jqXHR.setRequestHeader('X-CSRF-Token', token);
+            }
+        }
+    });
+}
+
 // ゲーム終了
 function finishGame() {
     clearTime = Math.round((Date.now() - startTime) / 1000);
+    const additionTime = (missCount * 3) + (timeUpCount * 5);
+    const resultTime = clearTime + additionTime;
     document.querySelector('#finish').style.display = "block";
     document.querySelector('#game').style.display = "none";
-    document.querySelector('#result').innerHTML = `<p>クリアタイムは${clearTime}秒です</p>
-                                                   <p>正解数は${correctAnswers}問です</p>
-                                                   <p>ミス入力は${errorCount}回です</p>`;
+    document.querySelector('#result').innerHTML = `<p>クリアタイムは${clearTime}秒です。</p>
+                                                   <p>正解数は${correctAnswers}問です。</p>
+                                                   <p>タイムアップは${timeUpCount}問なので${timeUpCount * 5}秒加算されます。</p>
+                                                   <p>ミス入力は${missCount}回なので${missCount * 3}秒加算されます。</p>
+                                                   <p>最終結果は${resultTime}秒です。</p>`;
     const resultTwitter = document.querySelector('#result-twitter');
-    resultTwitter.href = resultTwitter.href.replace('cleartime', String(clearTime)).
-                                            replace('answers', String(correctAnswers)).
-                                            replace('miss', String(errorCount));
+    resultTwitter.href = resultTwitter.href.replace('result', String(resultTime)).
+                                            replace('cleartime', String(clearTime)).
+                                            replace('miss', String(missCount)).
+                                            replace('timeup', String(timeUpCount));
+
+    set_csrftoken();
+    $.ajax({
+        url: '/user_time_attacks',
+        type: 'POST',
+        data: {
+            user_time_attack: {
+                user_id: document.querySelector('.user_id').value,
+                finish_time: clearTime,
+                miss_count: missCount,
+                incorrect_answer: timeUpCount,
+                addition_time: additionTime,
+                result_time: resultTime
+            }
+        },
+        dataType: 'json'
+    });
 }
 
 // Mac/windowsコマンド切り替え
@@ -355,7 +389,7 @@ function missFlash(e) {
         "hideMethod": "fadeOut"
     }
     Command: toastr["error"](`${e.key}  不正解です！`)
-    errorCount++;
+    missCount++;
 }
 
 // タイマー定義
@@ -379,12 +413,13 @@ function missFlash(e) {
             let $header = this.children('h4');
 
             if (timeLeft <= 0) {
+                timeUpCount++;
                 correctAnswer();
                 $header.empty().text('Time Up!').addClass('text-danger');
                 return;
             }
 
-//            $header.children('span').text(timeLeft);
+            // $header.children('span').text(timeLeft);
 
             let width = (timeLeft - 1) * (100/totalTime); // unit in '%'
             if (width < 20) { // less than 20 %

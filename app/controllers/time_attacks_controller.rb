@@ -7,5 +7,6 @@ class TimeAttacksController < ApplicationController
                      end
     @shortcut_keys_json = @shortcut_keys.to_json
     @os = request.os == 'Mac OSX' ? 'Mac' : ''
+    @user_id = logged_in? ? current_user.id : 1
   end
 end

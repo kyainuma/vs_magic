@@ -1,0 +1,30 @@
+.container
+  h2.mt-3 TimeAttack ランキング
+  table.table.table-striped
+    thead.bg-vs-dark
+      tr
+        th.text-center scope="col"
+          p 順位
+        th.text-center scope="col"
+          p ユーザー名
+        th.text-center scope="col"
+          p 時間
+        th.text-center scope="col"
+          p Miss Key
+    tbody
+      - @user_time_attacks.each_with_index do |record, i|
+        tr
+          td.text-center
+            p
+              = i + 1
+          td.text-center
+            p
+              = record.user.name
+          td.text-center
+            p
+              = record.result_time
+              | 秒
+          td.text-center
+            p
+              = record.miss_count
+              | key
