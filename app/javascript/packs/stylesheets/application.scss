@@ -53,6 +53,10 @@ textarea {
   border-radius: 0;
 }
 
+.card-header:first-child {
+  border-radius: 0;
+}
+
 .card > .list-group {
   border-bottom: 0;
 }
