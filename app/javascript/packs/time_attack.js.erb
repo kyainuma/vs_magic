@@ -16,9 +16,9 @@ function andMeta(e) {
     } else if (e.key === 'Meta') {
         command.innerHTML = `${modifier.meta}`;
     } else if (event_key !== answer_key && e.metaKey) {
-        missFlash(e);
+        missFlash(e.key);
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 
@@ -30,9 +30,9 @@ function andCtrl(e) {
     } else if (e.key === 'Control') {
         command.innerHTML = `${modifier.ctrl}`;
     } else if (event_key !== answer_key && e.ctrlKey) {
-        missFlash(e);
+        missFlash(e.key);
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 
@@ -44,9 +44,9 @@ function andAlt(e) {
     } else if (e.key === 'Alt') {
         command.innerHTML = `${modifier.alt}`;
     } else if (event_key !== answer_key && e.altKey) {
-        missFlash(e);
+        missFlash(e.key);
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 
@@ -58,9 +58,9 @@ function andShift(e) {
     } else if (e.key === 'Shift') {
         command.innerHTML = `${modifier.shift}`;
     } else if (event_key !== answer_key && e.shiftKey) {
-        missFlash(e);
+        missFlash(e.key);
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 
@@ -72,13 +72,13 @@ function andMetaCtrl(e) {
     } else if (e.key === 'Meta' && e.ctrlKey || e.key === 'Control' && e.metaKey) {
         command.innerHTML = `${modifier.meta} ${modifier.alt}`
     } else if (event_key !== answer_key && e.metaKey && e.altKey ) {
-        missFlash(e);
+        missFlash(e.key);
     } else if (e.key === 'Meta' && e.metaKey) {
         command.innerHTML = `${modifier.meta}`;
     } else if (e.key === 'Control' && e.ctrlKey) {
         command.innerHTML = `${modifier.ctrl}`;
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 
@@ -90,13 +90,13 @@ function andMetaAlt(e) {
     } else if (e.key === 'Meta' && e.alttKey || e.key === 'Alt' && e.metaKey) {
         command.innerHTML = `${modifier.meta} ${modifier.alt}`
     } else if (event_key !== answer_key && e.metaKey && e.altKey ) {
-        missFlash(e);
+        missFlash(e.key);
     } else if (e.key === 'Meta' && e.metaKey) {
         command.innerHTML = `${modifier.meta}`;
     } else if (e.key === 'Alt' && e.altKey) {
         command.innerHTML = `${modifier.alt}`;
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 
@@ -108,13 +108,13 @@ function andMetaShift(e) {
     } else if (event_key === 'meta' && e.shiftKey || event_key === 'shift' && e.metaKey) {
         command.innerHTML = `${modifier.meta} ${modifier.shift}`
     } else if (event_key !== answer_key && e.metaKey && e.shiftKey) {
-        missFlash(e);
+        missFlash(e.key);
     } else if (e.key === 'Meta' && e.metaKey) {
         command.innerHTML = `${modifier.meta}`;
     } else if (e.key === 'Shift' && e.shiftKey) {
         command.innerHTML =  `${modifier.shift}`;
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 
@@ -126,13 +126,13 @@ function andCtrlAlt(e) {
     } else if (e.key === 'Control' && e.alttKey || e.key === 'Alt' && e.ctrlKey) {
         command.innerHTML = `${modifier.ctrl} ${modifier.alt}`
     } else if (event_key !== answer_key && e.ctrlKey && e.altKey ) {
-        missFlash(e);
+        missFlash(e.key);
     } else if (e.key === 'Control' && e.ctrlKey) {
         command.innerHTML = `${modifier.ctrl}`;
     } else if (e.key === 'Alt' && e.altKey) {
         command.innerHTML = `${modifier.alt}`;
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 
@@ -144,13 +144,13 @@ function andCtrlShift(e) {
     } else if (e.key === 'Control' && e.shiftKey || e.key === 'Shift' && e.ctrlKey) {
         command.innerHTML = `${modifier.ctrl} ${modifier.shift}`
     } else if (event_key !== answer_key && e.ctrlKey && e.shiftKey ) {
-        missFlash(e);
+        missFlash(e.key);
     } else if (e.key === 'Control' && e.ctrlKey) {
         command.innerHTML = `${modifier.ctrl}`;
     } else if (e.key === 'Shift' && e.shiftKey) {
         command.innerHTML = `${modifier.shift}`;
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 
@@ -162,13 +162,13 @@ function andAltShift(e) {
     } else if (e.key === 'Shift' && e.altKey || e.key === 'Alt' && e.shiftKey) {
         command.innerHTML = `${modifier.alt} ${modifier.shift}`
     } else if (event_key !== answer_key && e.shiftKey && e.altKey ) {
-        missFlash(e);
+        missFlash(e.key);
     } else if (e.key === 'Shift' && e.shiftKey) {
         command.innerHTML = `${modifier.shift}`;
     } else if (e.key === 'Alt' && e.altKey) {
         command.innerHTML = `${modifier.alt}`;
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 
@@ -178,7 +178,7 @@ function noModifier(e) {
         rightFlash();
         correctAnswer();
     } else {
-        missFlash(e);
+        missFlash(e.key);
     }
 }
 // ここまで正解判定
@@ -370,7 +370,7 @@ function rightFlash() {
     });
 }
 
-function missFlash(e) {
+function missFlash(message) {
     toastr.options = {
         "closeButton": false,
         "debug": false,
@@ -388,7 +388,7 @@ function missFlash(e) {
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-    Command: toastr["error"](`${e.key}  不正解です！`)
+    Command: toastr["error"](`${message}  不正解です！`)
     missCount++;
 }
 
@@ -414,6 +414,7 @@ function missFlash(e) {
 
             if (timeLeft <= 0) {
                 timeUpCount++;
+                missFlash('TimeUp!');
                 correctAnswer();
                 $header.empty().text('Time Up!').addClass('text-danger');
                 return;
