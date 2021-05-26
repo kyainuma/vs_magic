@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe WinShortcutKey, type: :model do
+RSpec.describe ShortcutKey, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

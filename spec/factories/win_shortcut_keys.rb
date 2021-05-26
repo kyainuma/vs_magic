@@ -1,4 +1,4 @@
 FactoryBot.define do
-  factory :win_shortcut_key do
+  factory :shortcut_key do
   end
 end
