@@ -1,4 +1,6 @@
 class ShortcutKey < ApplicationRecord
+  mount_uploader :image, ShortcutKeyImageUploader
+
   validates :os_type, presence: true
   validates :answer_key, presence: true
   validates :question, presence: true

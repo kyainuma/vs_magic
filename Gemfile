@@ -55,6 +55,7 @@ gem 'seed-fu'
 gem 'sass-rails', '>= 6'
 
 # UI/UX
+gem 'carrierwave', '2.0.2'
 gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap-sass'

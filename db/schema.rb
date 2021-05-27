@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_212302) do
+ActiveRecord::Schema.define(version: 2021_05_27_004507) do
 
   create_table "shortcut_keys", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "answer_key", null: false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_212302) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "os_type", default: 1, null: false
+    t.string "image"
   end
 
   create_table "time_attacks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
