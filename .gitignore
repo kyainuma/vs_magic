@@ -30,8 +30,16 @@
 
 /public/packs
 /public/packs-test
+/public/uploads
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
 /.idea
+/vendor/bundle/ruby/2.7.0/bin/
+/vendor/bundle/ruby/2.7.0/cache/
+/vendor/bundle/ruby/2.7.0/extensions/x86_64-darwin-19/2.7.0/racc-1.5.2/
+/vendor/bundle/ruby/2.7.0/gems/
+/vendor/bundle/ruby/2.7.0/specifications/
+/vendor/bundle/ruby/2.7.0/build_info/
+/vendor/bundle/ruby/2.7.0/extensions/x86_64-darwin-19/2.7.0/

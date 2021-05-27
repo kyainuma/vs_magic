@@ -196,7 +196,7 @@ function problemReplacement() {
     document.querySelector('#question').innerHTML = `${keys[0].question}`;
     document.querySelector('#remainingProblems').innerHTML = `${remainingProblems}`;
     document.querySelector('#answer').innerHTML = `<span>${keys[0].display_key}</span>`;
-    document.querySelector('#img').setAttribute('src', `shortcutkeys/${keys[0].question}.gif`);
+    document.querySelector('#img').setAttribute('src', `${keys[0].image.url}`);
 }
 
 // 終了判定

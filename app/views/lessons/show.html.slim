@@ -15,7 +15,7 @@
           | 入力中コマンド :
           span#command
     .card.bg-vs-dark
-      = image_tag "/shortcutkeys/#{@shortcut_key.question}.gif", class: "bd-placeholder-img card-img-top col-12 mx-auto"
+      = image_tag @shortcut_key.image_url, class: "bd-placeholder-img card-img-top col-12 mx-auto"
   = link_to "戻る", lessons_path, class: "btn btn-lg btn-primary my-3 mx-auto bg-vs-blue"
 
 input.shortcut_keys_json name="arr_json" type="hidden" value="#{@shortcut_key_json}"
