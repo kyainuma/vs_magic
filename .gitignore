@@ -43,3 +43,4 @@ yarn-debug.log*
 /vendor/bundle/ruby/2.7.0/specifications/
 /vendor/bundle/ruby/2.7.0/build_info/
 /vendor/bundle/ruby/2.7.0/extensions/x86_64-darwin-19/2.7.0/
+/.env
