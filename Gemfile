@@ -75,6 +75,3 @@ gem 'rack-user_agent'
 
 # AWS
 gem 'fog-aws'
-
-# 環境変数管理
-gem 'dotenv-rails'
