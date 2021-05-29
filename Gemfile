@@ -28,6 +28,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'faker'
 end
 
 group :development do
@@ -42,6 +43,11 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
   gem 'overcommit'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
