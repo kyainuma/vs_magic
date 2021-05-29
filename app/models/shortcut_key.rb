@@ -1,10 +1,11 @@
 class ShortcutKey < ApplicationRecord
   mount_uploader :image, ShortcutKeyImageUploader
 
+  validates :answer_key, presence: true, length: { maximum: 255 }
+  validates :modifier_key, length: { maximum: 255 }
+  validates :question, presence: true, length: { maximum: 255 }
+  validates :display_key, presence: true, length: { maximum: 255 }
   validates :os_type, presence: true
-  validates :answer_key, presence: true
-  validates :question, presence: true
-  validates :display_key, presence: true
 
   enum os_type: { Mac: 0, Windows: 1 }
 
