@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :require_login
   before_action :set_user, only: %i[edit update]
 
   def show; end
@@ -21,6 +22,6 @@ class ProfilesController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:last_name, :first_name, :email, :avatar)
+      params.require(:user).permit(:name, :email)
     end
 end
