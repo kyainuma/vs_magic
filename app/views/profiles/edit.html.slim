@@ -1,0 +1,13 @@
+- content_for(:title, t('.title'))
+.container
+  .row
+    .col-md-10.offset-md-1
+      h1
+        = t '.title'
+      = form_with model: @user, url: profile_path, local: true do |f|
+        = render 'shared/error_messages', object: f.object
+        = f.label :email
+        = f.email_field :email, class: "form-control mb-3"
+        = f.label :name
+        = f.text_field :name, class: "form-control mb-3"
+        = f.submit class: "btn btn-primary"
