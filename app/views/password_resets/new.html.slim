@@ -1,0 +1,12 @@
+- content_for(:title, t('.title'))
+.container
+  .row
+    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+      h1.my-3
+        = t('.title')
+      = form_with url: password_resets_path, local: true do |f|
+        .form-group
+          = f.label :email, t(User.human_attribute_name(:email))
+          br
+          = f.email_field :email, class: 'form-control'
+        = f.submit t('password_resets.new.submit'), class: 'btn btn-primary'

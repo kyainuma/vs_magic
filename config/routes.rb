@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   root 'static_pages#home'
   get 'terms', to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
@@ -11,5 +13,6 @@ Rails.application.routes.draw do
   resources :time_attacks, only: %i[index]
   resources :lessons, only: %i[index show]
   resources :user_time_attacks, only: %i[index create]
+  resources :password_resets, only: %i[new create edit update]
   resource :profile, only: %i[show edit update]
 end

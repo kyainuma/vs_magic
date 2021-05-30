@@ -11,6 +11,7 @@ ja:
     logout: ログアウト
     edit: 編集
     delete: 削除
+    password_reset: パスワードリセット
     message:
       require_login: ログインしてください
       delete_confirm: 削除しますか？
@@ -66,3 +67,14 @@ ja:
     index:
       title: Lesson
       overview: 概要
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      submit: 送信
+    edit:
+      title: パスワードリセット
+    create:
+      success: パスワードリセット手順を送信しました
+    update:
+      success: パスワードを変更しました
+      fail: パスワードの変更に失敗しました
