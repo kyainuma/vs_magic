@@ -1,0 +1,19 @@
+- content_for(:title, t('.title'))
+.container.pt-3
+  .row
+    .col-md-10.offset-md-1
+      h1.mb-5
+        = t('.title')
+      table.table
+        tr
+          th[scope="row"]
+            = t(User.human_attribute_name(:email))
+          td
+            = current_user.email
+        tr
+          th[scope="row"]
+            = t(User.human_attribute_name(:name))
+          td
+            = current_user.name
+      = link_to t('defaults.edit'), edit_profile_path, class:"btn btn-success mr-3"
+      = link_to t('defaults.delete'), user_path(current_user), method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, class:"btn btn-danger"

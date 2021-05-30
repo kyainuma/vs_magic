@@ -1,6 +1,6 @@
 class UserTimeAttacksController < ApplicationController
   def index
-    @user_time_attacks = TimeAttack.order('result_time ASC').limit(100)
+    @user_time_attacks = TimeAttack.order('result_time ASC').limit(10)
   end
 
   def create

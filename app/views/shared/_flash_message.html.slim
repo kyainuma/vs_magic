@@ -1,4 +1,3 @@
 - flash.each do |message_type, message|
-  - if message_type == "notice" ? message_type = "success" : message_type = "danger"
   div class="mb-0 alert alert-#{message_type}"
     = message

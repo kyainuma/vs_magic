@@ -3,10 +3,24 @@ ja:
     models:
       user: ユーザー
       shortcut_key: ショートカットキー
+      time_attack:
     attributes:
       user:
         name: ユーザー名
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
-
+      shortcut_key:
+        answer_key: 回答キー
+        modifier_key: 修飾キー
+        question: 問題文
+        display_key: 表示用キー
+        os_type: OSタイプ
+        image: 画像
+      time_attack:
+        finish_time: 終了時間
+        miss_count: ミス入力回数
+        incorrect_answer: 不正回数
+        answer_display: 答え表示有無
+        addition_time: 加算時間
+        result_time: 最終結果時間

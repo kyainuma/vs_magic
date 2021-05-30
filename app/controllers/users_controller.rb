@@ -6,12 +6,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_path
-      flash[:notice] = 'ユーザーの作成に成功しました'
+      redirect_to login_path, success: t('.success')
     else
-      flash.now[:alert] = 'ユーザーの作成に失敗しました'
+      flash.now[:danger] = t('.fail')
       render :new
     end
+  end
+
+  def destroy
+    current_user.destroy!
+    redirect_to root_path, success: t('.success')
   end
 
   private

@@ -1,16 +1,17 @@
+- content_for(:title, t('.title'))
+h1.my-3 = t '.title'
 .container
-  h2.mt-3 TimeAttack ランキング
   table.table.table-striped
-    thead.bg-vs-dark
+    thead.bg-vs-blue
       tr
         th.text-center scope="col"
-          p 順位
+          p = t '.title'
         th.text-center scope="col"
-          p ユーザー名
+          p = t User.human_attribute_name(:name)
         th.text-center scope="col"
-          p 時間
+          p = t TimeAttack.human_attribute_name(:result_time)
         th.text-center scope="col"
-          p Miss Key
+          p = t TimeAttack.human_attribute_name(:miss_count)
     tbody
       - @user_time_attacks.each_with_index do |record, i|
         tr
