@@ -82,3 +82,6 @@ gem 'rack-user_agent'
 
 # AWS
 gem 'fog-aws'
+
+# Config
+gem 'config'
