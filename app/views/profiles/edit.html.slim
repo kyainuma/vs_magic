@@ -1,9 +1,9 @@
 - content_for(:title, t('.title'))
-.container
+.container.pt-3
   .row
     .col-md-10.offset-md-1
-      h1
-        = t '.title'
+      h1.mb-5
+        = t('.title')
       = form_with model: @user, url: profile_path, local: true do |f|
         = render 'shared/error_messages', object: f.object
         = f.label :email

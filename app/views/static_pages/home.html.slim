@@ -1,3 +1,4 @@
+- content_for(:title, t('.title'))
 main[role="main"]
   .jumbotron.bg-vs-dark.mb-0
     .container
@@ -7,12 +8,12 @@ main[role="main"]
         span.col-vs-blue S
         | hortcut　
         span.col-vs-blue MAGIC
-      h1.text-left.col-vs-blue VS MAGIC
+      h1.text-left.col-vs-blue #{t('defaults.app_name')}
       p.mb-5
         | VSCodeのショートカットをゲーム感覚で練習できるアプリ
       span.my-5
       p
-        = link_to 'ユーザー登録', new_user_path, class: "btn btn-lg btn-primary bg-vs-blue"
+        = link_to t('users.new.title'), new_user_path, class: "btn btn-lg btn-primary bg-vs-blue"
   .jumbotron.bg-vs-gray
     .row.mx-auto
       .col-4.d-flex.align-items-center
@@ -33,29 +34,29 @@ main[role="main"]
     .row.featurette
       .col-md-7
         h2.featurette-heading.text-left
-          | Time Attack
+          | #{t('time_attacks.index.title')}
           span.text-muted
             |
         p.mb-5
           | ランダムに10問出題されるショートカットキーを入力するタイムを競うタイピングゲームです。
           br
           | スマートフォンでは使用できません。
-        = link_to "Time Attack",  time_attacks_path, class: "btn btn-lg btn-primary bg-vs-blue mr-3 my-3"
-        = link_to "Ranking",  user_time_attacks_path, class: "btn btn-lg btn-primary bg-vs-blue"
+        = link_to t('time_attacks.index.title'),  time_attacks_path, class: "btn btn-lg btn-primary bg-vs-blue mr-3 my-3"
+        = link_to t('user_time_attacks.index.title'),  user_time_attacks_path, class: "btn btn-lg btn-primary bg-vs-blue"
       .col-md-5
         = image_tag "/time_attack_img.png", class: "featurette-image img-fluid mx-auto"
     hr.featurette-divider
     .row.featurette
       .col-md-7.order-md-2
         h2.featurette-heading.text-left
-          | Lesson
+          | #{t('lessons.index.title')}
           span.text-muted
             |
         p.mb-5
           | 全てのショートカットキー一覧　
           br
           | 各ショートカットキーの練習ができます。
-        = link_to "Lesson", lessons_path, class: "btn btn-lg btn-primary bg-vs-blue"
+        = link_to t('lessons.index.title'), lessons_path, class: "btn btn-lg btn-primary bg-vs-blue"
       .col-md-5.order-md-1
         = image_tag "/lesson_img.png", class: "featurette-image img-fluid mx-auto"
     hr.featurette-divider

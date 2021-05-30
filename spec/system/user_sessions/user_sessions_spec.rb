@@ -11,7 +11,7 @@ RSpec.describe 'UserSessions', type: :system do
         fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
         expect(page).to have_current_path root_path
-        expect(page).to have_content 'ログインに成功しました'
+        expect(page).to have_content 'ログインしました'
       end
     end
 
@@ -33,7 +33,7 @@ RSpec.describe 'UserSessions', type: :system do
     context 'ログアウトボタンをクリック' do
       it 'ログアウト処理が成功する' do
         click_link 'ログアウト'
-        expect(page).to have_current_path login_path
+        expect(page).to have_current_path root_path
         expect(page).to have_content 'ログアウトしました'
       end
     end

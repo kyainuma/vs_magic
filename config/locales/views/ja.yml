@@ -1,13 +1,68 @@
 ja:
+  enums:
+    shortcut_key:
+      os_type:
+        Mac: Mac
+        Windows: Windows
   defaults:
+    app_name: VS MAGIC
     login: ログイン
     register: 登録
     logout: ログアウト
+    edit: 編集
+    delete: 削除
+    message:
+      require_login: ログインしてください
+      delete_confirm: 削除しますか？
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
+  time:
+    formats:
+      default: '%Y/%m/%d %H:%M'
   users:
     new:
       title: ユーザー登録
       to_login_page: ログインページへ
+    create:
+      success: ユーザー登録が完了しました
+      fail: ユーザー登録に失敗しました
   user_sessions:
     new:
       title: ログイン
       to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+    create:
+      success: ログインしました
+      fail: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
+  profiles:
+    show:
+      title: プロフィール
+    edit:
+      title: プロフィール編集
+  static_pages:
+    home:
+      title: Top
+    privacy:
+      title: プライバシーポリシー
+    terms:
+      title: 利用規約
+  time_attacks:
+    index:
+      title: TimeAttack
+      result: 結果
+      result_twitter: 結果をTwitterでシェア
+      command_symbol: コマンド記号：
+      question: 問題：
+      remaining_problems: 残り問題数：
+      answer: 答え：
+      command:  入力：
+      retry: Retry
+  user_time_attacks:
+    index:
+      title: Ranking
+  lessons:
+    index:
+      title: Lesson
+      overview: 概要

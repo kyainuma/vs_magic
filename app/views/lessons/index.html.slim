@@ -1,12 +1,13 @@
+- content_for(:title, t('.title'))
+h1.my-3 = t '.title'
 .container
-  h2.mt-3 VSCode ショートカットキー 一覧
   table.table.table-striped
-    thead.bg-vs-dark
+    thead.bg-vs-blue
       tr
         th.text-center scope="col"
-          p ショートカットキー
+          p = t 'activerecord.models.shortcut_key'
         th.text-left scope="col"
-          p 概要
+          p = t '.overview'
     tbody
       - @shortcut_keys.each do |shortcut_key|
         tr

@@ -1,11 +1,11 @@
 footer.footer.mt-auto.py-3.bg-vs-dark
   .container
     span.text-muted
-      | © VS MAGIC
+      | © #{t('defaults.app_name')}
       ul.list-unstyled.text-small.my-auto
         li
-          = link_to "ホーム", root_path, class: "text-muted"
+          = link_to link_to t('static_pages.home.title'), root_path, class: "text-muted"
         li
-          = link_to "利用規約", terms_path, class: "text-muted"
+          = link_to link_to t('static_pages.terms.title'), terms_path, class: "text-muted"
         li
-          = link_to "プライバシーポリシー", privacy_path, class: "text-muted"
+          = link_to link_to t('static_pages.privacy.title'), privacy_path, class: "text-muted"

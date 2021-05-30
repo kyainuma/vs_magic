@@ -14,7 +14,7 @@ RSpec.describe User, type: :system do
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           expect(page).to have_current_path login_path
-          expect(page).to have_content 'ユーザーの作成に成功しました'
+          expect(page).to have_content 'ユーザー登録が完了しました'
         end
       end
 
@@ -27,7 +27,7 @@ RSpec.describe User, type: :system do
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           expect(page).to have_current_path users_path
-          expect(page).to have_content 'ユーザーの作成に失敗しました'
+          expect(page).to have_content 'ユーザー登録に失敗しました'
           expect(page).to have_content 'ユーザー名を入力してください'
         end
       end
@@ -41,7 +41,7 @@ RSpec.describe User, type: :system do
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           expect(page).to have_current_path users_path
-          expect(page).to have_content 'ユーザーの作成に失敗しました'
+          expect(page).to have_content 'ユーザー登録に失敗しました'
           expect(page).to have_content 'メールアドレスを入力してください'
         end
       end
@@ -56,7 +56,7 @@ RSpec.describe User, type: :system do
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           expect(page).to have_current_path users_path
-          expect(page).to have_content 'ユーザーの作成に失敗しました'
+          expect(page).to have_content 'ユーザー登録に失敗しました'
           expect(page).to have_content 'メールアドレスはすでに存在します'
           expect(page).to have_field 'メールアドレス', with: existed_user.email
         end
@@ -71,7 +71,7 @@ RSpec.describe User, type: :system do
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           expect(page).to have_current_path users_path
-          expect(page).to have_content 'ユーザーの作成に失敗しました'
+          expect(page).to have_content 'ユーザー登録に失敗しました'
           expect(page).to have_content 'メールアドレスは不正な値です'
         end
       end
@@ -85,7 +85,7 @@ RSpec.describe User, type: :system do
           fill_in 'パスワード確認', with: 'a' * 5
           click_button '登録'
           expect(page).to have_current_path users_path
-          expect(page).to have_content 'ユーザーの作成に失敗しました'
+          expect(page).to have_content 'ユーザー登録に失敗しました'
           expect(page).to have_content 'パスワードは6文字以上で入力してください'
         end
       end
@@ -99,7 +99,7 @@ RSpec.describe User, type: :system do
           fill_in 'パスワード確認', with: 'hogehoge'
           click_button '登録'
           expect(page).to have_current_path users_path
-          expect(page).to have_content 'ユーザーの作成に失敗しました'
+          expect(page).to have_content 'ユーザー登録に失敗しました'
           expect(page).to have_content 'パスワード確認とパスワードの入力が一致しません'
         end
       end
