@@ -43,6 +43,7 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
   gem 'overcommit'
+  gem 'letter_opener_web'
 end
 
 group :test do
@@ -81,3 +82,6 @@ gem 'rack-user_agent'
 
 # AWS
 gem 'fog-aws'
+
+# Config
+gem 'config'
