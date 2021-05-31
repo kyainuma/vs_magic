@@ -61,7 +61,24 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "shortcut_key_game_production"
 
   config.action_mailer.perform_caching = false
-
+  # deliverメソッドを実行したときに、true なら、メール配信を行なう。
+  config.action_mailer.perform_deliveries = true
+  # メール配信に失敗した場合にエラーを発生するかどうかを指定
+  # このオプションは、外部のメールサーバーが即時配信を行っている場合にのみ機能
+  config.action_mailer.raise_delivery_errors = true
+  # SMTP プロトコルによるメール配信を行う。
+  config.action_mailer.delivery_method = :smtp
+  # smtpの配信メソッドの詳細設定
+  # SENDGRID用
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    domain: 'heroku.com',
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_APIKEY'],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
