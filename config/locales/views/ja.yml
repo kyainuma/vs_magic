@@ -7,8 +7,9 @@ ja:
   defaults:
     app_name: VS MAGIC
     login: ログイン
-    register: 登録
     logout: ログアウト
+    submit: 送信
+    register: 登録
     edit: 編集
     delete: 削除
     password_reset: パスワードリセット
@@ -78,3 +79,9 @@ ja:
     update:
       success: パスワードを変更しました
       fail: パスワードの変更に失敗しました
+  contacts:
+    new:
+      title: お問い合わせ
+    create:
+      success: お問い合わせを受付しました
+      fail: お問い合わせに失敗しました

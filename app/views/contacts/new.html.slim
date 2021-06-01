@@ -1,0 +1,18 @@
+- content_for(:title, t('.title'))
+.container.mt-3
+  .row
+    .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+      h1.my-3
+        = t '.title'
+      = form_with model: @contact, local: true do |f|
+        = render 'shared/error_messages', object: @contact
+        .form-group
+          = f.label :name
+          = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.label :email
+          = f.text_field :email, class: 'form-control'
+        .form-group
+          = f.label :content
+          = f.text_area :content, class: 'form-control'
+        = f.submit (t 'defaults.submit'), class: 'btn btn-primary btn-raised'

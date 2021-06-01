@@ -12,7 +12,7 @@ RSpec.describe 'パスワードリセット', type: :system do
     fill_in 'パスワード', with: '123456789'
     fill_in 'パスワード確認', with: '123456789'
     click_button '更新する'
-    expect(page).to current_path login_path
+    expect(page).to have_current_path login_path
     expect(page).to have_content('パスワードを変更しました')
   end
 end

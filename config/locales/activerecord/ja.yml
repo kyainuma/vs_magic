@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       shortcut_key: ショートカットキー
       time_attack:
+      contact: お問い合わせ
     attributes:
       user:
         name: ユーザー名
@@ -24,3 +25,7 @@ ja:
         answer_display: 答え表示有無
         addition_time: 加算時間
         result_time: 最終結果時間
+      contact:
+        name: お名前
+        email: メールアドレス
+        content: お問い合わせ内容
