@@ -1,4 +1,6 @@
 class TimeAttacksController < ApplicationController
+  skip_before_action :require_login
+
   def index
     @shortcut_keys = ShortcutKey.new.time_attack_shortcut_keys(request.os)
     @shortcut_keys_json = @shortcut_keys.to_json

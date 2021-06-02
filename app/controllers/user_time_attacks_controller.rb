@@ -1,4 +1,6 @@
 class UserTimeAttacksController < ApplicationController
+  skip_before_action :require_login
+
   def index
     @user_time_attacks = TimeAttack.order('result_time ASC').limit(10)
   end

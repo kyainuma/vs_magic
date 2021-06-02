@@ -4,6 +4,10 @@ ja:
       os_type:
         Mac: Mac
         Windows: Windows
+    user:
+      role:
+        general: 一般
+        admin: 管理者
   defaults:
     app_name: VS MAGIC
     login: ログイン
@@ -18,6 +22,7 @@ ja:
       delete_confirm: 削除しますか？
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新できませんでした"
+      not_authorized: 権限がありません
   time:
     formats:
       default: '%Y/%m/%d %H:%M'
