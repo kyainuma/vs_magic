@@ -11,6 +11,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
+        role: 権限
       shortcut_key:
         answer_key: 回答キー
         modifier_key: 修飾キー
