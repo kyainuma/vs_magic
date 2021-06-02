@@ -70,9 +70,12 @@ gem 'bootstrap'
 gem 'font-awesome-sass'
 gem 'rails-i18n'
 gem 'meta-tags'
+gem 'rails_admin', '~> 2.0'
+gem 'enum_help'
 
 # Authentication
 gem 'sorcery'
+gem 'cancancan'
 
 # Google Analytics
 gem 'google-analytics-rails'
