@@ -46,9 +46,9 @@ VSCodeのショートカットキーを覚えられない人の為に、ゲー�
 - Nginx
 - Puma
 
-## 画面遷移図
+[comment]: <> (## 画面遷移図)
 
-[画面遷移図](https://xd.adobe.com/view/999a73f7-5a2c-4f7f-aae7-7429c94589ca-ccc9/)
+[comment]: <> ([画面遷移図]&#40;https://xd.adobe.com/view/999a73f7-5a2c-4f7f-aae7-7429c94589ca-ccc9/&#41;)
 
 ## ER図
 
