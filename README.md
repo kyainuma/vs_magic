@@ -2,7 +2,7 @@
 
 [![Image from Gyazo](https://i.gyazo.com/429279230689b1b3cb7b2be1aab9ef70.png)](https://gyazo.com/429279230689b1b3cb7b2be1aab9ef70)
 
-https://vs-magic.com
+https://vsmagic.herokuapp.com/
 
 - リリース14日で1,000PV突破！
 
@@ -41,8 +41,8 @@ VSCodeのショートカットキーを覚えられない人の為に、ゲー�
 - SCSS
 - JavaScript
 ### インフラストラクチャー
-- heroku 
-- MYSQL 
+- heroku
+- MYSQL
 - Nginx
 - Puma
 

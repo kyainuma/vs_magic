@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   resources :lessons, only: %i[index show]
   resources :user_time_attacks, only: %i[index create]
   resources :password_resets, only: %i[new create edit update]
-  resources :contacts, only: %i[new create]
+  # resources :contacts, only: %i[new create]
   resource :profile, only: %i[show edit update]
 end
