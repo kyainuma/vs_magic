@@ -70,7 +70,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   # smtpの配信メソッドの詳細設定
   # SENDGRID用
-  config.action_mailer.default_url_options = { host: 'vs-magic.com' }
+  config.action_mailer.default_url_options = { host: 'vsmagic.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
